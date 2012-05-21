@@ -4,6 +4,8 @@ gem 'rails', '3.2.3'
 gem 'bootstrap-sass','2.0.0'
 gem 'bcrypt-ruby','3.0.1'
 gem "muck-users", "~> 3.2.25"
+config.gem "authlogic"
+config.gem "muck-users"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
