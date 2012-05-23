@@ -11,16 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120518201033) do
+ActiveRecord::Schema.define(:version => 20120523180009) do
 
-  create_table "employees", :force => true do |t|
+  create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
+    t.string   "company"
+    t.string   "print_code"
+    t.string   "phone"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
   end
-
-  add_index "employees", ["email"], :name => "index_employees_on_email", :unique => true
 
 end
