@@ -1,14 +1,23 @@
 TippingPointPartners::Application.routes.draw do
-  get "employees/new"
+  get "sessions/new"
+
+  get "sessions/create"
+
+  get "sessions/destroy"
+
+  resources :users
+
+ # get "employees/new"
 
   root to: 'pages#home'
   
-  match '/home',      to: 'pages#home'
-  match '/work',      to: 'pages#work'
-  match '/people',    to: 'pages#people'
+  match "/home",      to: "pages#home"
+  match '/me',        to: 'users#show'
+  match '/company',   to: 'pages#my_company'
   match '/workspace', to: 'pages#workspace'
   match '/faqs',      to: 'pages#faqs'
   match '/contact',   to: 'pages#contact'
+  match '/new',       to: 'users#new'
   
 
   # The priority is based upon order of creation:
