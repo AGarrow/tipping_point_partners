@@ -4,14 +4,20 @@
 <%= form_for @user do |u| %>
 <%= u.label :name %>
 <%= u.text_field :name %>
+
 <%= u.label :email %>
 <%= u.text_field :email %>
+
 <%= u.label :password %>
-<%= u.text_field :password %>
+<%= u.password_field :password %>
+
 <%= u.label :password_confirmation %>
-<%= u.text_field :password_confirmation %>
+<%= u.password_field :password_confirmation %>
+
+<%= u.submit "Create", class: "btn btn-large btn-primary" %>
+
 <% end %>
-<%= render 'form' %>
 
 
-<%= link_to 'Back', users_path %>
+
+

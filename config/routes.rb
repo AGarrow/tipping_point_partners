@@ -6,6 +6,7 @@ TippingPointPartners::Application.routes.draw do
   get "sessions/destroy"
 
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
  # get "employees/new"
 
@@ -17,7 +18,10 @@ TippingPointPartners::Application.routes.draw do
   match '/workspace', to: 'pages#workspace'
   match '/faqs',      to: 'pages#faqs'
   match '/contact',   to: 'pages#contact'
-  match '/new',       to: 'users#new'
+  
+  match '/signup',    to: 'users#new'
+  match '/signin',    to: 'sessions#new'
+  match '/signout',   to: 'sessions#destroy', via: :delete
   
 
   # The priority is based upon order of creation:
