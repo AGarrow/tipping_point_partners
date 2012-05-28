@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   end
 
   def me
+    @user= current_user
   end
 
   def my_company

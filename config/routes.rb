@@ -12,14 +12,15 @@ TippingPointPartners::Application.routes.draw do
 
   root to: 'pages#home'
   
-  match "/home",      to: "pages#home"
-  match '/me',        to: 'users#show'
-  match '/company',   to: 'pages#my_company'
-  match '/workspace', to: 'pages#workspace'
+  match "/home",      to: "pages#home"  
+  match '/company',   to: 'pages#my_company' 
   match '/faqs',      to: 'pages#faqs'
   match '/contact',   to: 'pages#contact'
   
+  match '/me',        to: 'users#show'
+  match '/workspace', to: 'users#index'
   match '/signup',    to: 'users#new'
+  
   match '/signin',    to: 'sessions#new'
   match '/signout',   to: 'sessions#destroy', via: :delete
   
