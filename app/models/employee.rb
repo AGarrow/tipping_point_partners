@@ -1,4 +1,5 @@
 class Employee < ActiveRecord::Base
+  belongs_to :company
   attr_accessible :email, :name
   before_save {|employee| employee.email = email.downcase}
   validates :name, presence: true, length: {maximum: 50}, uniqueness: true

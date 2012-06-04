@@ -1,6 +1,28 @@
-<h1>Editing user</h1>
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @user.name %>
+      </h1>
+		<h2>
+			<%= Company.find(@user.company_id).name %>
+		</h2>
+	</section>
+</div>
+<% provide(:title, @user.name) %>
+<%= form_for @user do |u| %>
+<%= u.label :name %>
+<%= u.text_field :name %>
 
+<%= u.label :email %>
+<%= u.text_field :email %>
+
+
+<%= u.label :company_id %>
+<%= u.collection_select :company_id, Company.all, :id, :name, {:include_blank => true}%>
+
+<% end %>
 <%= render 'form' %>
-
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>

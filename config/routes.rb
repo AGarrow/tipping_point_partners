@@ -1,28 +1,40 @@
 TippingPointPartners::Application.routes.draw do
+  
+
+  
+
+
+
   get "sessions/new"
-
   get "sessions/create"
-
   get "sessions/destroy"
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-
- # get "employees/new"
+  resources :companies
 
   root to: 'pages#home'
   
-  match "/home",      to: "pages#home"  
-  match '/company',   to: 'pages#my_company' 
-  match '/faqs',      to: 'pages#faqs'
-  match '/contact',   to: 'pages#contact'
+  match "/home",        to: "pages#home"   
+  match '/faqs',        to: 'pages#faqs'
+  match '/contact',     to: 'pages#contact'
+  match '/me',          to: 'pages#me'
   
-  match '/me',        to: 'users#show'
-  match '/workspace', to: 'users#index'
-  match '/signup',    to: 'users#new'
+  match '/workspace',   to: 'users#index'
+  match '/signup',      to: 'users#new'
+  match '/edit',        to: 'users#edit'
+  match '/show',        to: 'users#show'
   
-  match '/signin',    to: 'sessions#new'
-  match '/signout',   to: 'sessions#destroy', via: :delete
+  match '/signin',      to: 'sessions#new'
+  match '/signout',     to: 'sessions#destroy', via: :delete
+  match '/my_company',  to: 'pages#my_company'
+  
+  match '/new_company', to: 'companies#new'
+  match '/companies',   to: 'companies#index'
+  
+  #match 'new_password_resets', to:'password_resets#new'
+  
+  resources :password_resets
   
 
   # The priority is based upon order of creation:
