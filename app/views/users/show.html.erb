@@ -3,9 +3,16 @@
   <aside class="span4">
     <section>
       <h1>
-        <%= @user.print_code %>
         <%= @user.name %>
       </h1>
+		<h2>
+			<%= Company.find(@user.company_id).name %>
+		</h2>
+	<ul>
+		<li>email: <%= @user.email %></li>
+		<li>phone: <%= @user.phone %></li>
+		<li>print code: <%= @user.print_code %></li>
+	</ul>
     </section>
   </aside>
 </div>

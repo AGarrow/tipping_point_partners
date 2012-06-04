@@ -1,0 +1,16 @@
+<table>
+	<h2><%= company.name %></h2>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+  </tr>
+	<% company.users.each do |user|  %>
+  		<tr>
+		    <td><%= user.name %></td>
+		    <td><%= user.email %></td>
+			<td><%= user.phone %></td>
+		  </tr>
+	<% end %>
+
+</table>

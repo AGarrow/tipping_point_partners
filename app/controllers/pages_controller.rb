@@ -1,5 +1,9 @@
 class PagesController < ApplicationController
   def home
+    @user=current_user
+    if !signed_in?
+      redirect_to signin_path
+    end
   end
 
   def me
@@ -7,6 +11,8 @@ class PagesController < ApplicationController
   end
 
   def my_company
+    @user= current_user
+    @company = Company.find(@user.company_id)
   end
 
   def workspace
