@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
      
    before_save do |user| 
       user.email = email.downcase 
-      create_remember_token 
+      generate_token(:remember_token) 
       user.name=name.titleize
    end
 
@@ -31,19 +31,14 @@ class User < ActiveRecord::Base
       UserMailer.password_reset(self).deliver
     end
     
-    def generate_token(column)
-      begin
-        self[column] = SecureRandom.urlsafe_base64
-      end while User.exists?(column => self[column])
-    end
-    
     def is?(role)
       roles.include?(role.to_s)
     end
     
     private
-      def create_remember_token
-        self.remember_token = SecureRandom.urlsafe_base64
+      def generate_token(column)
+        begin 
+          self[column]=SecureRandom.urlsafe_base64
+        end while User.exists?(column => self[column])
       end
-   
 end
