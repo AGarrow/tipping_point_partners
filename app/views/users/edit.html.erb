@@ -26,8 +26,10 @@
 <%= u.text_field :phone %>
 
 <%= link_to "reset password" ,new_password_reset_path %>
+<div class="actions"><%= u.submit "update user" %></div>
+
 
 <% end %>
-<%= render 'form' %>
+
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
