@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :company
-  attr_accessible :name, :email, :password, :password_confirmation, :company_id
+  attr_accessible :name, :email, :password, :password_confirmation, :company_id, :phone, :print_code 
   ROLES = %w[admin company_admin employee ]
     has_secure_password
     
@@ -17,12 +17,21 @@ class User < ActiveRecord::Base
     validates :email, presence:   true,
                       format:     { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
-    validates :password, presence: true, length: { minimum: 6 }
-    validates :password_confirmation,:company_id, presence: true 
-  
+    validates :password, presence: true, length: { minimum: 6 }, :if => :should_validate_password?
+    validates :password_confirmation,:company_id, presence: true , :if => :should_validate_password?
+    attr_accessor :updating_password
    
 
 
+
+
+    def is?(role)
+      roles.include?(role.to_s)
+    end
+    
+    def should_validate_password?
+      updating_password || new_record?
+    end
 
     def send_password_reset
       generate_token(:password_reset_token)
@@ -30,11 +39,7 @@ class User < ActiveRecord::Base
       save!
       UserMailer.password_reset(self).deliver
     end
-    
-    def is?(role)
-      roles.include?(role.to_s)
-    end
-    
+  
     private
       def generate_token(column)
         begin 
