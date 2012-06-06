@@ -1,16 +1,25 @@
-<table>
+<div class="container well">
+<table class="table table-bordered table-striped table-condensed">
 	<h2><%= company.name %></h2>
   <tr>
     <th>Name</th>
     <th>Email</th>
     <th>Phone</th>
+	<% if current_user.is? "admin" %>
+	<th>Role</th>
+	<% end %>
   </tr>
-	<% company.users.each do |user|  %>
+	<% company.users.each do |employee|  %>
   		<tr>
-		    <td><%= user.name %></td>
-		    <td><%= user.email %></td>
-			<td><%= user.phone %></td>
+		    <td><%= employee.name %></td>
+		    <td><%= employee.email %></td>
+			<td><%= employee.phone %></td>
+			<% if can? :manage, company %>
+			<td><%= employee.role %></td>
+			<td><%= link_to "edit", edit_user_path(employee) %></td>
+			<% end %>
 		  </tr>
 	<% end %>
 
 </table>
+</div>

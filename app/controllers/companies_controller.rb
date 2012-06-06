@@ -1,9 +1,9 @@
 class CompaniesController < ApplicationController
+  #load_and_authorize_resource
   # GET /companies
   # GET /companies.json
   def index
     @companies = Company.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @companies }

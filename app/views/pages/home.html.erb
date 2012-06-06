@@ -1,6 +1,6 @@
-
+<% provide(:title, "Home") %>
 <h1>Welcome <%= @user.name %>!</h1>
 
-<% if provided_phone? (@user) %>
+<% unless @user.phone %>
 	<p>It appears you haven't provided your phone number. If you would like to, just <%= link_to "edit your profile", edit_user_path(@user) %></p>
 <% end  %>

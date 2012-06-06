@@ -1,8 +1,12 @@
 class User < ActiveRecord::Base
   belongs_to :company
-  attr_accessible :name, :email, :password, :password_confirmation, :company_id, :phone, :print_code 
+  attr_accessible :name, :email, :password, :password_confirmation, :company_id, :phone, :print_code, :role
+  attr_accessor :updating_password 
+  
+  has_secure_password
+  
   ROLES = %w[admin company_admin employee ]
-    has_secure_password
+
     
      
    before_save do |user| 
@@ -11,6 +15,7 @@ class User < ActiveRecord::Base
       user.name=name.titleize
    end
 
+  
    
     validates :name, presence: true, length: { maximum: 50 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -19,16 +24,18 @@ class User < ActiveRecord::Base
                       uniqueness: { case_sensitive: false }
     validates :password, presence: true, length: { minimum: 6 }, :if => :should_validate_password?
     validates :password_confirmation,:company_id, presence: true , :if => :should_validate_password?
-    attr_accessor :updating_password
+
    
 
 
-
-
-    def is?(role)
-      roles.include?(role.to_s)
-    end
+#for authorization using CanCan
     
+    def is? (string)
+      string == (self.role)
+    end
+
+#for editing user profiles and resetting passwords    
+
     def should_validate_password?
       updating_password || new_record?
     end
