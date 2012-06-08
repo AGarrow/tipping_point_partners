@@ -6,7 +6,7 @@
     <th>Email</th>
     <th>Phone</th>
 	<% if current_user.is? "admin" %>
-	<th>Role</th>
+		<th>Role</th>
 	<% end %>
   </tr>
 	<% company.users.each do |employee|  %>
@@ -14,11 +14,13 @@
 		    <td><%= employee.name %></td>
 		    <td><%= employee.email %></td>
 			<td><%= employee.phone %></td>
-			<% if can? :manage, company %>
 			<td><%= employee.role %></td>
-			<td><%= link_to "edit", edit_user_path(employee) %></td>
+			<% if can? :manage, company %>
+				<td>					
+					<%=collection_select employee, :role, User::ROLES, :to_s, :humanize, {:selected => employee.role} %>
+				</td>
 			<% end %>
-		  </tr>
+	    </tr>
 	<% end %>
 
 </table>
