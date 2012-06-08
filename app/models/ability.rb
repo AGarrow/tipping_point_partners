@@ -14,7 +14,10 @@ class Ability
          end
        elsif user.role == "employee"
          can :read, :all
+       else 
+         can :create, User
        end
+       
        
          
     #
