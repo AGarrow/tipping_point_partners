@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
 
-    @company = Company.find(params[:id])
+  @company = Company.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -63,6 +63,7 @@ class CompaniesController < ApplicationController
       if @company.update_attributes(params[:company])
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
         format.json { head :no_content }
+        redirect_to @company
       else
         format.html { render action: "edit" }
         format.json { render json: @company.errors, status: :unprocessable_entity }

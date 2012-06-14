@@ -2,23 +2,33 @@
 <h1>The Incubator</h1>
 <div class="tabbable tabs-left">
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#tab1" data-toggle="tab">All Companies</a></li>
-		<% @companies.each do |company| %>
-		<li><a href="#tab<%= company.id+1 %>" data-toggle="tab"><%= company.name %></a></li>
+		<% title_tab_number = 1 %>
+		<% @companies.each do |company| %>			
+			<li><a href="#tab<%=title_tab_number%>" data-toggle="tab"><%= company.name %></a></li>
+			<%title_tab_number+=1 %>
+		<% end %>
+		<% if current_user.is? "admin" %>
+	 		<li><a href="#tab<%=title_tab_number+1%>"data-toggle="tab">New Company</a></li>
 		<% end %>
 	</ul>
+
 	<div class="tab-content">
-		<div class="tab-pane active" id="tab1">
-			<%= render :partial =>'show', :collection => @companies, :as => :company %>
-		</div>
+		<% tab_number = 1 %>
 		<% @companies.each do |company| %>
-		<div class="tab-pane active" id="tab<%= company.id+1 %>" >
-			<p><%= render :partial =>'show', :locals => {:company => company} %></p>
-		</div>
+			<div class="tab-pane active" id="tab<%=tab_number%>" >
+				<p><%= render :partial =>'show', :locals => {:company => company} %></p>
+			</div>
+			<% tab_number+=1 %>
+		<% end %>
+		<% if current_user.is? "admin"
+			@company = Company.new%>
+			<div class="tab-pane acive" id="tab<%=tab_number+1%>">
+				<p><%= render :partial =>'form', :object => @company %></p>
+			</div>
 		<% end %>
 	</div>
 </div>
-<button class="btn"><%= link_to "New Company!", new_company_path %></button>
+
 
 
 

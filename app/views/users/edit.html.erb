@@ -35,9 +35,10 @@
 	<%= link_to "reset password" ,new_password_reset_path %>
 	<%= u.submit "update user" %>
 </div>
-
-
 <% end %>
+
+<%= gravatar_for @user %>
+<a href="http://gravatar.com/emails">change</a>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
