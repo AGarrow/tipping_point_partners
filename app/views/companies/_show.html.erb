@@ -1,6 +1,24 @@
-<div class="container well">
+<% company ||= @company %>
+<div class="container well text-align: center">
 <table class="table table-bordered table-striped table-condensed">
-	<h2><%= company.name %></h2>
+
+	<div class = "row">
+		<div class= "span4">
+			<% unless company.avatar_file_name.nil? %>
+				<%= image_tag company.avatar.url(:thumb) %>	
+			<% end %>
+		</div>
+		<div class="span4 offset4">
+			<h2>
+				<%= company.name %>
+			</h2>
+		</div>
+		<div class="span2 pull-right">
+			<button class="btn"><%= link_to "edit", edit_company_path(company) %></button>
+		</div>
+
+	</div>		
+	
   <tr>
     <th>Name</th>
     <th>Email</th>
@@ -14,7 +32,6 @@
 		    <td><%= employee.name %></td>
 		    <td><%= employee.email %></td>
 			<td><%= employee.phone %></td>
-			<td><%= employee.role %></td>
 			<% if can? :manage, company %>
 				<td>					
 					<%=collection_select employee, :role, User::ROLES, :to_s, :humanize, {:selected => employee.role} %>

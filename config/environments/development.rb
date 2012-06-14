@@ -38,4 +38,7 @@ TippingPointPartners::Application.configure do
   #Reset password mailer
   config.action_mailer.default_url_options = { :host => "localhost:3000"}
   
+  #ImageMagick location for paperclip
+  Paperclip.options[:command_path] = "/opt/local/bin/convert"
+  
 end

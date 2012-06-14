@@ -12,6 +12,7 @@ TippingPointPartners::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :companies
+  resources :password_resets
 
   root to: 'pages#home'
   
@@ -23,7 +24,6 @@ TippingPointPartners::Application.routes.draw do
   match '/workspace',   to: 'users#index'
   match '/signup',      to: 'users#new'
   match '/edit',        to: 'users#edit'
-  match '/show',        to: 'users#show'
   
   match '/signin',      to: 'sessions#new'
   match '/signout',     to: 'sessions#destroy', via: :delete
@@ -31,10 +31,10 @@ TippingPointPartners::Application.routes.draw do
   
   match '/new_company', to: 'companies#new'
   match '/companies',   to: 'companies#index'
-  
+
   #match 'new_password_resets', to:'password_resets#new'
   
-  resources :password_resets
+ 
   
 
   # The priority is based upon order of creation:
