@@ -1,5 +1,5 @@
-<form class="span4 offset4 well form-horizontal">
-	<%= form_for(@company) do |f| %>
+<div class="span4 offset4 well">
+	<%= form_for @company, :html =>{:class => "form-horizontal"} do |f| %>
 	  <% if @company.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
@@ -20,15 +20,23 @@
 	    <%= f.label :print_code %><br />
 	    <%= f.text_field :print_code %>
 	  </div>
+	  <div class="field">		
+	  	<%= f.label :blurb %>
+		<%= f.text_area :blurb, :class =>"input-xlarge", :id=>"textarea",:rows => "3"  %>		
+	  </div>
 		<%= f.label :Company_Logo %>
 		<%= f.file_field :avatar %>
 		<div class="row">
-	  		<div class="span2">
-			    <%= f.submit %>
+	  		<div>
+	    		<%= f.submit %>
 			</div>
-			<div class="span2">
-				<%=button_to "delete", {:action => "destroy", :id => @company.id},:confirm => "Are you sure?", :method => :delete, :class => 'submitLink'  %>
+		
+	<% end %>
+			<div>
+				<%=button_to "delete", {:action => "destroy", :id => @company.id},:confirm => "Are you sure?", :method => :delete, :class => 'submitLink'  %>		
+			</div>
+			<div>
+				<%= link_to 'Cancel', companies_path %>
 			</div>
 		</div>
-	<% end %>
-</form>
+</div>

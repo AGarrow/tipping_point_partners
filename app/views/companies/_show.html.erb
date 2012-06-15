@@ -1,35 +1,42 @@
 <% company ||= @company %>
+<% provide(:title,'Companies') %>
 <div class="container well text-align: center">
 <table class="table table-bordered table-striped table-condensed">
 
 	<div class = "row">
-		<div class= "span4">
+		<div class="span2 pull-left">
 			<% unless company.avatar_file_name.nil? %>
 				<%= image_tag company.avatar.url(:thumb) %>	
 			<% end %>
 		</div>
-		<div class="span4 offset4">
+		<div class="span4 <% if company.avatar_file_name.nil? %>offset4<%else%>offset2<% end %>">
 			<h2>
 				<%= company.name %>
 			</h2>
 		</div>
+		
 		<div class="span2 pull-right">
+			<% if can? :manage, company %>
 			<button class="btn"><%= link_to "edit", edit_company_path(company) %></button>
+			<% end %>
 		</div>
 
+	</div>
+	<div class="container">
+		<p><%= company.blurb %></p>
 	</div>		
 	
   <tr>
     <th>Name</th>
     <th>Email</th>
     <th>Phone</th>
-	<% if current_user.is? "admin" %>
+	<% if can? :manage, company %>
 		<th>Role</th>
 	<% end %>
   </tr>
 	<% company.users.each do |employee|  %>
   		<tr>
-		    <td><%= employee.name %></td>
+		    <td><%= employee.name %><%= gravatar_for employee %></td>
 		    <td><%= employee.email %></td>
 			<td><%= employee.phone %></td>
 			<% if can? :manage, company %>

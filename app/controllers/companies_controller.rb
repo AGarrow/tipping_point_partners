@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  #load_and_authorize_resource
+  load_and_authorize_resource
   # GET /companies
   # GET /companies.json
   def index
@@ -63,7 +63,6 @@ class CompaniesController < ApplicationController
       if @company.update_attributes(params[:company])
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
         format.json { head :no_content }
-        redirect_to @company
       else
         format.html { render action: "edit" }
         format.json { render json: @company.errors, status: :unprocessable_entity }

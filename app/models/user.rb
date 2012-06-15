@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :company
-  attr_accessible :name, :email, :password, :password_confirmation, :company_id, :phone, :print_code, :role
+  attr_accessible :name, :email, :avatar, :password, 
+  :password_confirmation, :company_id, :phone, :print_code, :role
   attr_accessor :updating_password 
   
   has_secure_password
