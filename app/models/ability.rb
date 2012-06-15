@@ -6,14 +6,17 @@ class Ability
     #
       user ||= User.new # guest user (not logged in)
 
-       if user.role == "admin"
+       if user.is? "admin"
          can :manage, :all
-       elsif user.role == "company_admin"
-         can :manage, User do |employee|
-           employee.try(:company_id) == user.company_id
-         end
-       elsif user.role == "employee"
+       elsif user.is? "company_admin"
          can :read, :all
+         can :manage, Company, :id => user.company_id
+         can :destroy, User do |employee|
+           employee.try(:company_id) == current_user.company_id
+         end 
+       elsif user.is? "employee"
+         can :read, :all
+         can :update, User, :id => user.id
        else 
          can :create, User
        end
