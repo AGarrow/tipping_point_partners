@@ -1,0 +1,2 @@
+module AltAuthenticationsHelper
+end

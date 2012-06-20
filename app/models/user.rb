@@ -2,8 +2,9 @@ class User < ActiveRecord::Base
   belongs_to :company
   attr_accessible :first_name,:last_name, :email, :avatar, :password, 
   :password_confirmation, :company_id, :phone, :print_code, :role, :atoken, :asecret, :avatar_option
-  attr_accessor :updating_password 
-  
+  attr_accessor :updating_password
+   
+  has_many :altAuthentications
   has_secure_password
   
   ROLES = %w[admin company_admin employee ]
@@ -13,7 +14,6 @@ class User < ActiveRecord::Base
      
    before_save do |user| 
       user.email = email.downcase 
-      generate_token(:remember_token) 
       user.first_name=first_name.capitalize
       user.last_name=last_name.capitalize
    end

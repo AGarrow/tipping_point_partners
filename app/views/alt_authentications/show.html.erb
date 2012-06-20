@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @alt_authentication.user_id %>
+</p>
+
+<p>
+  <b>Provider:</b>
+  <%= @alt_authentication.provider %>
+</p>
+
+<p>
+  <b>Uid:</b>
+  <%= @alt_authentication.uid %>
+</p>
+
+
+<%= link_to 'Edit', edit_alt_authentication_path(@alt_authentication) %> |
+<%= link_to 'Back', alt_authentications_path %>

@@ -1,0 +1,27 @@
+<h1>Listing alt_authentications</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Provider</th>
+    <th>Uid</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @alt_authentications.each do |alt_authentication| %>
+  <tr>
+    <td><%= alt_authentication.user_id %></td>
+    <td><%= alt_authentication.provider %></td>
+    <td><%= alt_authentication.uid %></td>
+    <td><%= link_to 'Show', alt_authentication %></td>
+    <td><%= link_to 'Edit', edit_alt_authentication_path(alt_authentication) %></td>
+    <td><%= link_to 'Destroy', alt_authentication, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Alt authentication', new_alt_authentication_path %>

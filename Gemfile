@@ -5,8 +5,14 @@ gem 'bootstrap-sass','2.0.0'
 gem 'bcrypt-ruby','3.0.1'
 gem "authlogic"
 gem "cancan", "1.6.7"
-gem "linkedin","0.3.7"
 gem "paperclip","3.0.4"
+
+
+#integration with other web services
+
+gem "linkedin","0.3.7"
+gem "omniauth","1.1.0"
+gem "omniauth-facebook"
 
 
 # Bundle edge Rails instead:

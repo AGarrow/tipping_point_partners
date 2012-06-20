@@ -5,6 +5,8 @@ TippingPointPartners::Application.routes.draw do
 
 
 
+  resources :alt_authentications
+
   get "sessions/new"
   get "sessions/create"
   get "sessions/destroy"
@@ -36,6 +38,7 @@ TippingPointPartners::Application.routes.draw do
   match '/companies',   to: 'companies#index'
 
   match '/linked_in',    to: 'linked_in#index'
+  match '/auth/:provider/callback', to: 'alt_authentications#create'
   #match 'new_password_resets', to:'password_resets#new'
   
  
