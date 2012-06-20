@@ -1,24 +1,26 @@
 class User < ActiveRecord::Base
   belongs_to :company
-  attr_accessible :name, :email, :avatar, :password, 
-  :password_confirmation, :company_id, :phone, :print_code, :role
+  attr_accessible :first_name,:last_name, :email, :avatar, :password, 
+  :password_confirmation, :company_id, :phone, :print_code, :role, :atoken, :asecret, :avatar_option
   attr_accessor :updating_password 
   
   has_secure_password
   
   ROLES = %w[admin company_admin employee ]
+  AVATAR_OPTIONS = %w[upload gravatar LinkedIn none]
 
     
      
    before_save do |user| 
       user.email = email.downcase 
       generate_token(:remember_token) 
-      user.name=name.titleize
+      user.first_name=first_name.capitalize
+      user.last_name=last_name.capitalize
    end
 
   
    
-    validates :name, presence: true, length: { maximum: 50 }
+    validates :first_name,:last_name, presence: true, length: { maximum: 50 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence:   true,
                       format:     { with: VALID_EMAIL_REGEX },

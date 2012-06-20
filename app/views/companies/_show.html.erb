@@ -36,7 +36,7 @@
   </tr>
 	<% company.users.each do |employee|  %>
   		<tr>
-		    <td><%= employee.name %><%= gravatar_for employee %></td>
+		    <td><%= name(employee) %><%= gravatar_for employee %></td>
 		    <td><%= employee.email %></td>
 			<td><%= employee.phone %></td>
 			<% if can? :manage, company %>
