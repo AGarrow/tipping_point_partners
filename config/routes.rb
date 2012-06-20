@@ -9,6 +9,9 @@ TippingPointPartners::Application.routes.draw do
   get "sessions/create"
   get "sessions/destroy"
 
+#  get "linked_in/index"
+  get "linked_in/callback"
+  
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :companies
@@ -32,6 +35,7 @@ TippingPointPartners::Application.routes.draw do
   match '/new_company', to: 'companies#new'
   match '/companies',   to: 'companies#index'
 
+  match '/linked_in',    to: 'linked_in#index'
   #match 'new_password_resets', to:'password_resets#new'
   
  

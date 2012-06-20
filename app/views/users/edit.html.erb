@@ -1,42 +1,57 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @user.first_name) %>
 <div class="row">
   <aside class="span4">
     <section>
       <h1>
-        <%= @user.name %>
+        <%= @user.first_name %>
       </h1>
-		<h2>
+	    <h2>
 			<%= Company.find(@user.company_id).name %>
 		</h2>
+		<p>
+			<%= gravatar_for @user %>
+			<a href="http://gravatar.com/emails">change</a>
+		</p>
 	</section>
 </div>
-<% provide(:title, @user.name) %>
 	<%= form_for @user do |u| %>
-	<%= u.label :name %>
-	<%= u.text_field :name %>
 
-	<%= u.label :email %>
-	<%= u.text_field :email %>
+		<%= u.label :avatar, "picture" %>
+		<%= u.file_field :avatar %>
+	
+		<%= u.label :first_name %>
+		<%= u.text_field :first_name %>
+		
+		<%= u.label :last_name %>
+		<%= u.text_field :last_name %>
 
-
-	<%= u.label :company_id %>
-	<%= u.collection_select :company_id, Company.all, :id, :name, {:include_blank => true}%>
-
-	<%= u.label :phone %>
-	<%= u.text_field :phone %>
-
-	<% if can? :manage, Company %>
-	<%= u.label :role %>
-	<%= u.collection_select :role, User::ROLES, :to_s, :humanize %>
-<% end %>
+		<%= u.label :email %>
+		<%= u.text_field :email %>
 
 
+		<%= u.label :company_id %>
+		<%= u.collection_select :company_id, Company.all, :id, :name, {:include_blank => true}%>
+
+		<%= u.label :phone %>
+		<%= u.text_field :phone %>
+
+		<% if can? :manage, Company %>
+		<%= u.label :role %>
+		<%= u.collection_select :role, User::ROLES, :to_s, :humanize, :disabled => "admin" %>				
+		<% end %>
+		
+		<% User::AVATAR_OPTIONS.each do |option|  %>		
+		<%= u.label :avatar_option, option, :class=>"checkbox inline"  %>
+		<%= u.radio_button :avatar_option, option, :class=>"checkbox " %>		
+		<% end %>
+		
 <div class="btn-group">
+	
 	<%= link_to "reset password" ,new_password_reset_path %>
-	<%= u.submit "update user" %>
+	<%= u.submit%>
+	
 </div>
 <% end %>
 
-<%= gravatar_for @user %>
-<a href="http://gravatar.com/emails">change</a>
+
 

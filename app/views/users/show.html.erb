@@ -1,10 +1,10 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @user.first_name) %>
 <div class="row">
   <aside class="span4">
     <section>
       <h1>
 		<%= gravatar_for @user %>
-        <%= @user.name %>
+        <%= name(@user) %>
       </h1>
 		<h2>
 			<%= Company.find(@user.company_id).name %>
