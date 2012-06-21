@@ -4,3 +4,19 @@
 <% unless @user.phone %>
 	<p>It appears you haven't provided your phone number. If you would like to, just <%= link_to "edit your profile", edit_user_path(@user) %></p>
 <% end  %>
+
+<div id="homeCarousel" class="carousel slide">
+	<!-- Carousel Items-->
+
+	<div class="carousel-inner">
+		<div class="row">
+			<div class="active item"><%=image_tag @myCompany.avatar.url %></div>
+			<% @companies.each do |company| %>
+			<div class ="item"><%= image_tag company.avatar.url %></div>
+			<% end %>
+		</div>
+	</div>
+	<!-- Carousel nav-->
+	<a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
+	<a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
+</div>

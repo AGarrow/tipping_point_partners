@@ -1,5 +1,8 @@
 @import "bootstrap";
 
+.carousel-inner{text-align: center;}
+.carousel .item > img {display: inline-block;}
+
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
