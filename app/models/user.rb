@@ -13,11 +13,13 @@ class User < ActiveRecord::Base
      
    before_save do |user| 
       user.email = email.downcase 
-      generate_token(:remember_token) 
       user.first_name=first_name.capitalize
       user.last_name=last_name.capitalize
    end
 
+   before_create do |user|
+     generate_token(:remember_token) 
+   end
   
    
     validates :first_name,:last_name, presence: true, length: { maximum: 50 }

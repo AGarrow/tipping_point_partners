@@ -33,16 +33,25 @@
 	<% if can? :manage, company %>
 		<th>Role</th>
 	<% end %>
+	
+	
+	
   </tr>
 	<% company.users.each do |employee|  %>
   		<tr>
+			<% if has_avatar?(employee)  %>
 		    <td><%= name(employee) %><%= gravatar_for employee %></td>
+			<% end %>
 		    <td><%= employee.email %></td>
 			<td><%= employee.phone %></td>
 			<% if can? :manage, company %>
-				<td>					
+				<td class="inline">					
 					<%=collection_select employee, :role, User::ROLES, :to_s, :humanize, {:selected => employee.role} %>
 				</td>
+				<td>
+						<%= button_to "remove",:action => "destroy" %>
+				</td>
+				
 			<% end %>
 	    </tr>
 	<% end %>
