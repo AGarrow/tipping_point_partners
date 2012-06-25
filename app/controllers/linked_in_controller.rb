@@ -13,7 +13,7 @@ class LinkedInController < ApplicationController
   
   def callback
     client = LinkedIn::Client.new("ppcjz72tyk7c","MnYxWzGIIRTI0tOw")
-    if current_user.nil?
+
     if current_user.atoken.nil?
       pin = params[:oauth_verifier]
       atoken, asecret = client.authorize_from_request(session[:rtoken],session[:rsecret],pin)
@@ -37,5 +37,5 @@ class LinkedInController < ApplicationController
       
   end
   
-
+    
 end
