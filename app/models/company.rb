@@ -7,6 +7,10 @@ class Company < ActiveRecord::Base
     company.name = company.name.titleize
   end
   
-  
+  before_destroy do |company|
+    company.users.each do |u|
+      u.destroy
+    end
+  end
   
 end

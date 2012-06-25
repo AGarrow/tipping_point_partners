@@ -21,6 +21,9 @@
 <%= u.label :company_id %>
 <%= u.collection_select :company_id, Company.all, :id, :name, {:include_blank => true}%>
 
+<%= u.label :avatar, "picture" %>
+<%= u.file_field :avatar %>
+
 <%= u.submit "Create", class: "btn btn-large btn-primary" %>
 
 <% end %>

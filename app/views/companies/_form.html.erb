@@ -1,4 +1,4 @@
-<div class="span4 offset4 well">
+<div id="welcome"class="span4 well">
 	<%= form_for @company, :html =>{:class => "form-horizontal"} do |f| %>
 	  <% if @company.errors.any? %>
 	    <div id="error_explanation">
@@ -27,16 +27,17 @@
 		<%= f.label :Company_Logo %>
 		<%= f.file_field :avatar %>
 		<div class="row">
-	  		<div>
-	    		<%= f.submit %>
-			</div>
+	  		<div class="control-group">
+	    		<%= f.submit :class=>"btn" %>
+			
 		
 	<% end %>
-			<div>
-				<%=button_to "delete", {:action => "destroy", :id => @company.id},:confirm => "Are you sure?", :method => :delete, :class => 'submitLink'  %>		
-			</div>
-			<div>
-				<%= link_to 'Cancel', companies_path %>
+				<%= link_to 'Cancel', companies_path, :class =>"btn" %>
+				<% unless @company.new_record? %>
+				<%=button_to "delete", {:action => "destroy", :id => @company.id},:confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger"  %>	
+				<% end %>	
+				
+
 			</div>
 		</div>
 </div>

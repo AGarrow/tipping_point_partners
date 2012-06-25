@@ -2,8 +2,8 @@
 <% provide(:title, "Sign in") %>
 <h1>Sign in</h1>
 
-<div class="row">
-  <div class="span3.5 offset3 well">
+<div class="row-fluid">
+  <div id="welcome" class="span3 well">
     <%= form_for(:session, url: sessions_path) do |f| %>
 
       <%= f.label :email %>
@@ -17,10 +17,9 @@
 		<%= link_to "forgot password?", new_password_reset_path, class: "btn btn-large" %>	
 	</div>	    
   </div>
-<div class="span3 well">
+<div id="welcome"class="span3 well">
 	 <h2>new user?</h2>
 	 <%= link_to "Sign up now!", signup_path, class: "btn btn-large" %>
-	 <%= link_to "Sign up using LinkedIn", linked_in_path, class: "btn btn-large" %>
 </div>
 
   

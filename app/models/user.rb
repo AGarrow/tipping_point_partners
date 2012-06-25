@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
   belongs_to :company
   attr_accessible :first_name,:last_name, :email, :avatar, :password, 
-  :password_confirmation, :company_id, :phone, :print_code, :role, :atoken, :asecret, :avatar_option
+  :password_confirmation, :company_id, :phone, :print_code, :role, :atoken, :asecret
   attr_accessor :updating_password 
   
   has_secure_password
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>"}
   
   ROLES = %w[admin company_admin employee ]
   AVATAR_OPTIONS = %w[upload gravatar LinkedIn none]
@@ -18,7 +19,7 @@ class User < ActiveRecord::Base
    end
 
    before_create do |user|
-     generate_token(:remember_token) 
+     generate_token(:remember_token)
    end
   
    
