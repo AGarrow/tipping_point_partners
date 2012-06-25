@@ -12,7 +12,7 @@ gem "paperclip","3.0.4"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+
 
 gem 'json'
 
@@ -27,6 +27,11 @@ gem 'jquery-rails'
 group :development, :test do
 	gem 'webrat'
 	gem 'rspec-rails'
+	gem 'sqlite3'
+end
+
+group :production do
+	gem 'pg'
 end
    
 
