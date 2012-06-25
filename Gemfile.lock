@@ -34,6 +34,9 @@ GEM
       activerecord (>= 3.0.7)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.0)
+    bootstrap-sass-rails (2.0.4.0)
+      rails (~> 3.1)
+      sass-rails (~> 3.1)
     builder (3.0.0)
     cancan (1.6.7)
     cocaine (0.2.1)
@@ -144,6 +147,7 @@ DEPENDENCIES
   authlogic
   bcrypt-ruby (= 3.0.1)
   bootstrap-sass (= 2.0.0)
+  bootstrap-sass-rails
   cancan (= 1.6.7)
   coffee-rails (~> 3.2.1)
   jquery-rails
@@ -153,6 +157,5 @@ DEPENDENCIES
   pg
   rails (= 3.2.3)
   rspec-rails
-  sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   webrat
