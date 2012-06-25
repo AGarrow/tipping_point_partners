@@ -1,5 +1,5 @@
 <% company ||= @company %>
-<% provide(:title,'Companies') %>
+
 <div class="container well text-align: center">
 <table class="table table-bordered table-striped table-condensed">
 
@@ -24,37 +24,48 @@
 	</div>
 	<div class="container">
 		<p><%= company.blurb %></p>
-	</div>		
-	
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone</th>
-	<% if can? :manage, company %>
-		<th>Role</th>
-	<% end %>
-	
-	
-	
-  </tr>
+	</div>	
+
 	<% company.users.each do |employee|  %>
-  		<tr>
-			<% if has_avatar?(employee)  %>
-		    <td><%= name(employee) %><%= gravatar_for employee %></td>
-			<% end %>
-		    <td><%= employee.email %></td>
-			<td><%= employee.phone %></td>
-			<% if can? :manage, company %>
-				<td class="inline">					
-					<%=collection_select employee, :role, User::ROLES, :to_s, :humanize, {:selected => employee.role} %>
-				</td>
-				<td>
-						<%= button_to "remove",:action => "destroy" %>
-				</td>
+			<% if ((cannot? :manage, company) && (display_avatar(employee))) %>	
+				<div class="span2 well">
+					<div ><%= display_avatar(employee)  %></div>
+					<div >
+						<ul class="unstyled">
+							<li><%= name(employee) %></li>	
+							<li><%= employee.email %></li>	
+							<li><%= employee.phone %></li>		
+						</ul>
+					</div>
+				</div>
+						
+			<% else %>
+
+
+				  		<tr>
+			
+						    <td><%= name(employee) %></td>
+						    <td><%= employee.email %></td>
+							<td><%= employee.phone %></td>
+							<% if can? :manage, company %>
+								<td class="inline">	
+									<%= form_for(employee) do |e| %>				
+										<%= e.collection_select :role, User::ROLES, :to_s, :humanize, :disabled => "admin" %> 
+										<%=e.text_field :print_code, :cols=>40  %>
+										<%= e.submit %>
+									<% end %>
+							
+								
+									<%= link_to "Remove", user_path(employee), :confirm => "Are you sure?", :method => :delete, :class=>"btn btn-danger" %>
+									
+								</td>
 				
-			<% end %>
-	    </tr>
+							<% end %>
+					    </tr>
+			<%end %>
+			
 	<% end %>
+	
 
 </table>
 </div>

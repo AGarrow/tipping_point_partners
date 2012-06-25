@@ -7,9 +7,11 @@
 					<li><%= link_to "Tipping Point Partners", home_path %></li>
 				</ul>
 				<ul class="nav pull-right">
-					<% if signed_in? %>			
-					<li><%= link_to "Workspace", companies_path %></li>
+					<% if signed_in? %>	
 					<li><%= link_to "FAQs", faqs_path %></li>
+					<li><%= link_to "Directory", users_path %></li>		
+					<li><%= link_to "Workspace", companies_path %></li>
+
 					<li id="fat-menu" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							Me <b class="caret"></b>

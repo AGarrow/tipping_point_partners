@@ -3,6 +3,11 @@
 .carousel-inner{text-align: center;}
 .carousel .item > img {display: inline-block;}
 
+#welcome{
+margin:0 auto;
+float: none;
+}
+
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;

@@ -9,8 +9,8 @@
 			<%= Company.find(@user.company_id).name %>
 		</h2>
 		<p>
-			<%= gravatar_for @user %>
-			<a href="http://gravatar.com/emails">change</a>
+			<%= display_avatar(@user) %>
+
 		</p>
 	</section>
 </div>
@@ -39,11 +39,7 @@
 		<%= u.label :role %>
 		<%= u.collection_select :role, User::ROLES, :to_s, :humanize, :disabled => "admin" %>				
 		<% end %>
-		
-		<% User::AVATAR_OPTIONS.each do |option|  %>		
-		<%= u.label :avatar_option, option, :class=>"checkbox inline"  %>
-		<%= u.radio_button :avatar_option, option, :class=>"checkbox " %>		
-		<% end %>
+			
 		
 <div class="btn-group">
 	
