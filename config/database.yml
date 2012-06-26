@@ -27,5 +27,5 @@ production:
   database: db/production
   pool: 5
   timeout: 5000
-  username: postgresql   
+  username: postgres   
   password: 38698252
