@@ -9,7 +9,9 @@
 	<div class="carousel-inner">		
 			<div class="active item"><%=image_tag @myCompany.avatar.url %></div>
 			<% @companies.each do |company| %>
+				<% if company.avatar? %>
 			<div class ="item"><%= image_tag company.avatar.url %></div>
+				<% end %>
 			<% end %>		
 	</div>
 	<!-- Carousel nav-->
