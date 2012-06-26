@@ -3,10 +3,15 @@
 .carousel-inner{text-align: center;}
 .carousel .item > img {display: inline-block;}
 
+
 #welcome{
 margin:0 auto;
 float: none;
 }
+#card{ float: left;
+padding: none;
+width: 22%;
+height: 200px}
 
 /* mixins, variables, etc. */
 
