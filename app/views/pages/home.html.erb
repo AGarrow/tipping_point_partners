@@ -7,7 +7,15 @@
 	<!-- Carousel Items-->
 
 	<div class="carousel-inner">		
-			<div class="active item"><%=image_tag @myCompany.avatar.url %></div>
+			<div class="active item">
+				<% if @myCompany.avatar? %>
+					<%=image_tag @myCompany.avatar.url %>
+				<% else %>
+					<div class="hero-unit">
+						<h1><%= @myCompany.name %></h1>
+					</div>
+				<% end %>
+			</div>
 			<% @companies.each do |company| %>
 				<% if company.avatar? %>
 			<div class ="item"><%= image_tag company.avatar.url %></div>
