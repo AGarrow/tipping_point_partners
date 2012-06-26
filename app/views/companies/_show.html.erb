@@ -28,7 +28,7 @@
 	
 	<% company.users.each do |employee|  %>
 			<% if ((cannot? :manage, company) && (display_avatar(employee))) %>	
-				<div id="card"class="span*">
+				<div id="card" class="span*">
 					<div ><%= display_avatar(employee)  %></div>
 					<div  >
 						<ul class="unstyled">
@@ -51,12 +51,13 @@
 								<td class="inline">	
 									<%= form_for(employee) do |e| %>				
 										<%= e.collection_select :role, User::ROLES, :to_s, :humanize, :disabled => "admin" %> 
-										<%=e.text_field :print_code, :cols=>40  %>
-										<%= e.submit %>
+										<%=e.text_field :print_code, :placeholder => "print code", :size => "8"  %>
+										<%= e.submit :class =>"btn" %>
+										<%= link_to "Remove", user_path(employee), :confirm => "Are you sure?", :method => :delete, :class=>"btn btn-danger" %>
 									<% end %>
 							
 								
-									<%= link_to "Remove", user_path(employee), :confirm => "Are you sure?", :method => :delete, :class=>"btn btn-danger" %>
+									
 									
 								</td>
 				
