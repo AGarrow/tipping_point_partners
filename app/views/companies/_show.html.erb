@@ -25,12 +25,12 @@
 	<div class="container">
 		<p><%= company.blurb %></p>
 	</div>	
-
+	
 	<% company.users.each do |employee|  %>
 			<% if ((cannot? :manage, company) && (display_avatar(employee))) %>	
-				<div class="span2 well">
+				<div id="card"class="span*">
 					<div ><%= display_avatar(employee)  %></div>
-					<div >
+					<div  >
 						<ul class="unstyled">
 							<li><%= name(employee) %></li>	
 							<li><%= employee.email %></li>	

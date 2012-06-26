@@ -15,7 +15,7 @@ module UsersHelper
   
   def display_avatar(user)
     if user.avatar?
-      image_tag(user.avatar, :size => "120x120")
+      image_tag(user.avatar, :size => "100x15")
     else
       gravatar_for(user)
     end

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  
+  @title="LLC"
   protect_from_forgery
   include SessionsHelper
   include UsersHelper
