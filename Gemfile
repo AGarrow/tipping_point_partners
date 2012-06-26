@@ -19,6 +19,7 @@ gem 'json'
 group :assets do
   gem 'bootstrap-sass','2.0.0'
   gem 'bootstrap-sass-rails'
+  gem 'twitter-bootstrap-rails'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
