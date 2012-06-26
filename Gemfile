@@ -28,6 +28,7 @@ end
 gem 'jquery-rails'
 
 group :development, :test do
+	gem 'sqlite3'
 	gem 'webrat'
 	gem 'rspec-rails'
 

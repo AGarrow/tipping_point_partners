@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+jQuery(function() {
+	
+	$('.carousel').carousel({
+	  interval: 4000
+	});
+	
+});
+
