@@ -11,26 +11,6 @@ module UsersHelper
 ##        gravatar_for(user)
 ##      end
 ##  end
-      
   
-  def display_avatar(user)
-    if user.avatar?
-      image_tag(user.avatar, :size => "100x15")
-    else
-      gravatar_for(user)
-    end
-  end
-  
-  def gravatar_for(user)
-    require 'net/http'
-    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
-    gravatar_url = "http://gravatar.com/avatar/#{gravatar_id}.png?d=#{404}"
-    uri= URI(gravatar_url)
-    res = Net::HTTP.get_response(uri)
-    if res.is_a? (Net::HTTPNotFound)
-      nil
-    else
-      image_tag(gravatar_url, alt: user.first_name, class: "gravatar",:size =>"120x120")
-    end  
-  end
+
 end
