@@ -29,7 +29,7 @@
 	<% company.users.each do |employee|  %>
 			<% if ((cannot? :manage, company) && employee.avatar?) %>	
 				<div id="card" class="span*">
-					<div ><%= image_tag employee.avatar.url(:thumb)  %></div>
+					<div ><%= image_tag employee.avatar.url(:small)  %></div>
 					<div  >
 						<ul class="unstyled">
 							<li><%= name(employee) %></li>	
