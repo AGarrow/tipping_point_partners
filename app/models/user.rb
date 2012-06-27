@@ -5,7 +5,11 @@ class User < ActiveRecord::Base
   attr_accessor :updating_password 
   
   has_secure_password
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>"}
+  has_attached_file :avatar, 
+  :styles => {
+    :thumb => "150x150>",
+    :small => "200x200>"
+    }
   
   ROLES = %w[admin company_admin employee ]
   AVATAR_OPTIONS = %w[upload gravatar LinkedIn none]

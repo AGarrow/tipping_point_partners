@@ -9,12 +9,12 @@
 			<%= Company.find(@user.company_id).name %>
 		</h2>
 		<p>
-			<%= display_avatar(@user) %>
+			<%= @user.avatar.url %>
 
 		</p>
 	</section>
 </div>
-	<%= form_for @user do |u| %>
+	<%= form_for @user, :html => { :multipart => true } do |u| %>
 
 		<%= u.label :avatar, "picture" %>
 		<%= u.file_field :avatar %>

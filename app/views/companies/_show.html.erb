@@ -27,9 +27,9 @@
 	</div>	
 	
 	<% company.users.each do |employee|  %>
-			<% if ((cannot? :manage, company) && (display_avatar(employee))) %>	
+			<% if ((cannot? :manage, company) && employee.avatar?) %>	
 				<div id="card" class="span*">
-					<div ><%= display_avatar(employee)  %></div>
+					<div ><%= image_tag employee.avatar.url(:thumb)  %></div>
 					<div  >
 						<ul class="unstyled">
 							<li><%= name(employee) %></li>	
@@ -49,9 +49,8 @@
 							<td><%= employee.phone %></td>
 							<% if can? :manage, company %>
 								<td class="inline">	
-									<%= form_for(employee) do |e| %>				
+									<%= form_for(employee, :html=>{:class=>"pull-right"}) do |e| %>				
 										<%= e.collection_select :role, User::ROLES, :to_s, :humanize, :disabled => "admin" %> 
-										<%=e.text_field :print_code, :placeholder => "print code", :size => "8"  %>
 										<%= e.submit :class =>"btn" %>
 										<%= link_to "Remove", user_path(employee), :confirm => "Are you sure?", :method => :delete, :class=>"btn btn-danger" %>
 									<% end %>
