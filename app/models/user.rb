@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
   has_secure_password
   has_attached_file :avatar, 
   :styles => {
-    :thumb => "100x100>",
-    :small => "200x200>"
+    :thumb => "100x100#",
+    :small => "150x150#"
     }
   
   ROLES = %w[admin company_admin employee ]
