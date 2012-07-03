@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     :small => "150x150#"
     },
     :storage => :s3,
+    :bucket => ENV[tipping_point_partners],
     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
     :path => "/:style/:id/:filename"
   
