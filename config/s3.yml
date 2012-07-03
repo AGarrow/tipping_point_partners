@@ -1,0 +1,9 @@
+development:
+  bucket: tipping_point_partners_dev                
+  access_key_id: AKIAJBSIZCBBLP7GWUPA
+  secret_access_key: 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
+
+production:
+  bucket: tipping_point_partners
+  access_key_id: AKIAJBSIZCBBLP7GWUPA
+  secret_access_key: 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
