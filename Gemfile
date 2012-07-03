@@ -7,7 +7,7 @@ gem "authlogic"
 gem "cancan", "1.6.7"
 gem "linkedin","0.3.7"
 gem "paperclip","3.0.4"
-
+gem 'aws-s3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
