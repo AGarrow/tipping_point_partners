@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
      
    before_save do |user| 
       user.email = email.downcase 
-      user.first_name=first_name.capitalize
-      user.last_name=last_name.capitalize
+      user.first_name=first_name.titleize
+      user.last_name=last_name.titleize
    end
 
    before_create do |user|
