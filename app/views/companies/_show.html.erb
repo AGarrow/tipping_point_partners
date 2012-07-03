@@ -1,19 +1,22 @@
 <% company ||= @company %>
 
-<div class="container well text-align: center">
+<div class=" well text-align: left">
 <table class="table table-bordered table-striped table-condensed">
 
-	<div class = "row">
+	<div class = "row-fluid">
+
 		<div class="span2 pull-left">
 			<% unless company.avatar_file_name.nil? %>
 				<%= image_tag company.avatar.url(:thumb) %>	
 			<% end %>
 		</div>
-		<div class="span4 <% if company.avatar_file_name.nil? %>offset4<%else%>offset2<% end %>">
-			<h2>
-				<%= company.name %>
-			</h2>
+		<div class="span8">
+				<h2>
+					<%= company.name %>
+				</h2>
 		</div>
+	
+
 		
 		<div class="span2 pull-right">
 			<% if can? :manage, company %>
