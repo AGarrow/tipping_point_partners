@@ -20,6 +20,6 @@ ActionMailer::Base.smtp_settings = {
   :authentication => :plain,
   :user_name      => ENV['tippingpointpartners86@gmail.com'],
   :password       => ENV['Chambers'],
-  :domain         => 'heroku.com'
+  :domain         => 'tpp.herokuapp.com'
 }
 ActionMailer::Base.delivery_method = :smtp
