@@ -10,7 +10,7 @@
 				<%= image_tag company.avatar.url(:thumb) %>	
 			<% end %>
 		</div>
-		<div class="span8">
+		<div <% if company.avatar? %> class="span8"<% end %>>
 				<h2>
 					<%= company.name %>
 				</h2>
