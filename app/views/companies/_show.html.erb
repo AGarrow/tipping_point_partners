@@ -29,14 +29,14 @@
 		<p><%= company.blurb %></p>
 	</div>	
 	
-	<% company.users.each do |employee|  %>
+	<% company.users.sort_by!{|user| user.last_name}.each do |employee|  %>
 			<% if ((cannot? :manage, company) && employee.avatar?) %>	
 				<div id="card" class="span*">
 					<div ><%= image_tag employee.avatar.url(:small)  %></div>
 					<div  >
 						<ul class="unstyled">
 							<li><%= name(employee) %></li>	
-							<li><%= employee.email %></li>	
+							<li><%= list_email employee %></li>	
 							<li><%= employee.phone %></li>		
 						</ul>
 					</div>
