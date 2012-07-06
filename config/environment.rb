@@ -15,11 +15,12 @@ TippingPointPartners::Application.initialize!
 #config.gem "cancan"
 
 ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.sendgrid.net',
-  :port           => '587',
-  :authentication => :plain,
-  :user_name      => ENV['tippingpointpartners86@gmail.com'],
-  :password       => ENV['Chambers'],
-  :domain         => 'tpp.herokuapp.com'
+:user_name => "tippingpointpartners86@gmail.com",
+:password => "Chambers",
+:domain => "tpp.herokuapp.com",
+:address => "smtp.sendgrid.net",
+:port => 587,
+:authentication => :plain,
+:enable_starttls_auto => true
 }
 ActionMailer::Base.delivery_method = :smtp
