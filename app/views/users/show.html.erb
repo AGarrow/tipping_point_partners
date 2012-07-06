@@ -1,23 +1,27 @@
 <% provide(:title, @user.first_name) %>
-<div class="row">
-  <aside class="span4 well">
-    <section>
-      <h1>
+<div class="container">
+	<div class="row">
+	  <aside class="span4 offset4 well">
+	    <section>
+	      <h1>
 	
-		<%= image_tag @user.avatar.url %>
-        <%= name(@user) %>
-      </h1>
-		<h2>
-			<%= Company.find(@user.company_id).name %>
-		</h2>
-	<ul>
-		<li>email: <%= @user.email %></li>
-		<li>phone: <%= @user.phone %></li>
+			<%= image_tag @user.avatar.url %>
+	        <%= name(@user) %>
+	      </h1>
+			<h2>
+				<%= Company.find(@user.company_id).name %>
+			</h2>
+		<ul>
+			<li>email: <%= @user.email %></li>
+			<li>phone: <%= @user.phone %></li>
 
-	</ul>
-    </section>
-  </aside>
+		</ul>
+	    </section>
+		<% if can? :update, @user %>
+			<%= link_to 'Edit', edit_user_path(@user) %> 
+		<% end %>
+	  </aside>
+	</div>
+
+
 </div>
-
-<%= link_to 'Edit', edit_user_path(@user) %> 
-

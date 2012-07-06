@@ -1,53 +1,53 @@
 <% provide(:title, @user.first_name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= @user.first_name %>
-      </h1>
-	    <h2>
-			<%= Company.find(@user.company_id).name %>
-		</h2>
-		<p>
-			<%= @user.avatar.url %>
-
-		</p>
-	</section>
-</div>
-	<%= form_for @user, :html => { :multipart => true } do |u| %>
-
-		<%= u.label :avatar, "picture" %>
-		<%= u.file_field :avatar %>
-	
-		<%= u.label :first_name %>
-		<%= u.text_field :first_name %>
+<div class="container">
+	<div class="row">
 		
-		<%= u.label :last_name %>
-		<%= u.text_field :last_name %>
+	  <div class="span4 offset4 well">
+	      <h1>
+	        <%= @user.first_name %>
+	      </h1>
+		    <h2>
+				<%= Company.find(@user.company_id).name %>
+			</h2>
+			<p>
+				<%= @user.avatar.url %>
 
-		<%= u.label :email %>
-		<%= u.text_field :email %>
+			</p>
+	
+		<%= form_for @user, :html => { :multipart => true } do |u| %>
+
+			<%= u.label :avatar, "picture" %>
+			<%= u.file_field :avatar %>
+	
+			<%= u.label :first_name %>
+			<%= u.text_field :first_name %>
+		
+			<%= u.label :last_name %>
+			<%= u.text_field :last_name %>
+
+			<%= u.label :email %>
+			<%= u.text_field :email %>
 
 
-		<%= u.label :company_id %>
-		<%= u.collection_select :company_id, Company.all, :id, :name, {:include_blank => true}%>
+			<%= u.label :company_id %>
+			<%= u.collection_select :company_id, Company.all, :id, :name, {:include_blank => true}%>
 
-		<%= u.label :phone %>
-		<%= u.text_field :phone %>
+			<%= u.label :phone %>
+			<%= u.text_field :phone %>
 
-		<% if can? :manage, Company %>
-		<%= u.label :role %>
-		<%= u.collection_select :role, User::ROLES, :to_s, :humanize, :disabled => "admin" %>				
-		<% end %>
+			<% if can? :manage, Company %>
+			<%= u.label :role %>
+			<%= u.collection_select :role, User::ROLES, :to_s, :humanize, :disabled => "admin" %>				
+			<% end %>
 			
 		
-<div class="btn-group">
+	<div class="btn-group">
 	
-	<%= link_to "reset password" ,new_password_reset_path %>
-	<%= u.submit%>
+		<%= link_to "reset password" ,new_password_reset_path %>
+		<%= u.submit%>
 	
+	</div>
+	<% end %>
+	</div>
 </div>
-<% end %>
-
-
 
