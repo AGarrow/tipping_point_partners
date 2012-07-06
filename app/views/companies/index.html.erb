@@ -6,7 +6,7 @@
 		<ul class="nav nav-tabs">
 			<% title_tab_number = 1 %>
 			<% @companies.each do |company| %>			
-				<li><a href="#tab<%=title_tab_number%>" data-toggle="tab"><%= company.name %></a></li>
+				<li><a href="#tab<%=title_tab_number%>" data-toggle="tab"><%= list_name company %></a></li>
 				<%title_tab_number+=1 %>
 			<% end %>
 			<% if current_user.is? "admin" %>
