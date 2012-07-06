@@ -49,8 +49,8 @@
 
 				  		<tr>
 			
-						    <td><%= name(employee) %></td>
-						    <td><%= employee.email %></td>
+						    <td><%= link_to name(employee), employee %></td>
+						    <td><%= link_to employee.email, employee %></td>
 							<td><%= employee.phone %></td>
 							<% if can? :manage, company %>
 								<td class="inline">	
