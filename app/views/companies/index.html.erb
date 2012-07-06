@@ -1,7 +1,7 @@
 <% provide(:title,'Workspace') %>
 <h1>The Workspace</h1>
-<div class="container">
-	<div class="row">
+
+<div class="row">
 	<div class="tabbable tabs-left">
 		<ul class="nav nav-tabs">
 			<% title_tab_number = 1 %>
@@ -13,7 +13,6 @@
 		 		<li><a href="#tab<%=title_tab_number+1%>"data-toggle="tab">New Company</a></li>
 			<% end %>
 		</ul>
-
 		<div class="span10 tab-content">
 			<% tab_number = 1 %>
 			<% @companies.each do |company| %>
@@ -29,8 +28,8 @@
 				</div>
 			<% end %>
 		</div>
-	</div>
 </div>
+
 
 
 

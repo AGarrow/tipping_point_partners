@@ -11,7 +11,8 @@
 	      </ul>
 	    </div>
 	  <% end %>
-
+		<%= f.label :Company_Logo %>
+		<%= f.file_field :avatar %>
 	  <div class="field">
 	    <%= f.label :name %><br />
 	    <%= f.text_field :name %>
@@ -24,10 +25,9 @@
 	  	<%= f.label :blurb %>
 		<%= f.text_area :blurb, :class =>"input-xlarge", :id=>"textarea",:rows => "3"  %>		
 	  </div>
-		<%= f.label :Company_Logo %>
-		<%= f.file_field :avatar %>
-		<div class="row">
-	  		<div class="control-group">
+
+
+	  		<div class="btn-group">
 	    		<%= f.submit :class=>"btn" %>
 			
 		
@@ -39,5 +39,5 @@
 				
 
 			</div>
-		</div>
+
 </div>
