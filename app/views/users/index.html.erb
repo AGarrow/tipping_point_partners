@@ -4,6 +4,7 @@
 	<ul class="nav nav-tabs">
 		<li class="active"><a href = "#tab1" data-toggle="tab">Last Name</a></li>
 		<li><a href = "#tab2" data-toggle="tab">First Name</a></li>
+		<li><a href = "#tab3" data-toggle="tab">Company</a></li>
 	</ul>
 
 
@@ -43,7 +44,27 @@
 					<td><%= user.company.name %></td>
 				</tr>
 				<% end %>
-		</div>	
+			</table>	
+		</div>
+	
+		<div class="tab-pane fade"id="tab3">
+				<table class="table table-bordered table-striped table-condensed">
+				  <tr>
+				    <th>Name</th>
+				    <th>Email</th>
+					<th>Phone</th>
+					<th>Company</th>
+				  </tr>
+					<% @company_name.each do |user| %>
+					<tr>
+						<td><%= name(user) %></td>
+						<td><%= user.email %></td>
+						<td><%= user.phone %></td>
+						<td><%= user.company.name %></td>
+					</tr>
+					<% end %>
+				</table>
+		</div>
 	</div>
 </div>
 

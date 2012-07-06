@@ -30,15 +30,20 @@
 	</div>	
 	
 	<% company.users.sort_by!{|user| user.last_name}.each do |employee|  %>
-			<% if ((cannot? :manage, company) && employee.avatar?) %>	
+			<% if ((cannot? :manage, company) && employee.avatar?) %>
+				
 				<div id="card" class="span*">
-					<div ><%= image_tag employee.avatar.url(:small)  %></div>
+					<div ><%=link_to (image_tag employee.avatar.url(:small)),employee  %></div>
 					<div  >
+
 						<ul class="unstyled">
-							<li><%= name(employee) %></li>	
-							<li><%= list_email employee %></li>	
-							<li><%= employee.phone %></li>		
+													
+							<li><%=link_to name(employee), employee %></li>	
+							<li><%=link_to list_email(employee), employee %></li>	
+							<li><%=employee.phone %></li>
+							
 						</ul>
+						
 					</div>
 				</div>
 						
