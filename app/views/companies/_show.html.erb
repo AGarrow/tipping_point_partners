@@ -14,10 +14,7 @@
 				<h2>
 					<%= company.name %>
 				</h2>
-		</div>
-	
-
-		
+		</div>		
 		<div class="span2 pull-right">
 			<% if can? :manage, company %>
 			<button class="btn"><%= link_to "edit", edit_company_path(company) %></button>
@@ -57,13 +54,15 @@
 							<td><%= employee.phone %></td>
 							<% if can? :manage, company %>
 								<td class="inline">	
-									<%= form_for(employee, :html=>{:class=>"pull-right"}) do |e| %>				
-										<%= e.collection_select :role, User::ROLES, :to_s, :humanize, :disabled => "admin" %> 
-										<%= e.submit :class =>"btn" %>
+									<%= form_for(employee, :html=>{:class=>"pull-right"}) do |e| %>	
+										<div class="btn-group">		
+										<%= e.collection_select :role, User::ROLES, :to_s, :humanize, {:disabled => "admin"}, {"style"=> "width:100px", "class"=>"btn"} %> 
+										
+										<%= e.submit "Update", :class =>"btn" %>
 										<%= link_to "Remove", user_path(employee), :confirm => "Are you sure?", :method => :delete, :class=>"btn btn-danger" %>
 									<% end %>
-							
-								
+										</div>
+									
 									
 									
 								</td>
