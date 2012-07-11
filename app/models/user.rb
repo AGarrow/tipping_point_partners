@@ -30,14 +30,14 @@ class User < ActiveRecord::Base
    end
   
    
-    validates :first_name,:last_name, presence: true, length: { maximum: 50 }
+    validates :first_name,:last_name, presence: true, length: { maximum: 20 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence:   true,
                       format:     { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
     validates :password, presence: true, length: { minimum: 6 }, :if => :should_validate_password?
-    validates :password_confirmation,:company_id, presence: true , :if => :should_validate_password?
-
+    validates :password_confirmation, presence: true , :if => :should_validate_password?
+    validates :company_id, presence: true
    
 
 
@@ -47,7 +47,13 @@ class User < ActiveRecord::Base
       string == (self.role)
     end
 
-#for editing user profiles and resetting passwords    
+#for editing user profiles and resetting passwords 
+   def send_validation 
+     generate_token(:validation_token)
+     self.validation_sent_at = Time.zone.now
+     save!
+     UserMailer.registration_confirmation(self).deliver
+   end
 
     def should_validate_password?
       updating_password || new_record?

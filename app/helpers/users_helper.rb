@@ -1,4 +1,6 @@
 module UsersHelper
+  
+
   def name(user)
     name = [user.first_name,user.last_name].join(' ')
   end
