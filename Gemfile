@@ -14,7 +14,7 @@ gem 'aws-sdk'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 	gem 'pg'
-
+	gem 'factory_girl_rails'
 	gem 'bootstrap-sass','2.0.0'
   	gem 'bootstrap-sass-rails'
   	gem 'twitter-bootstrap-rails'
@@ -32,6 +32,12 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'webrat'
 	gem 'rspec-rails'
+
+end
+
+group :test do
+	gem 'capybara', '1.1.2'
+	gem 'growl'
 
 end
 

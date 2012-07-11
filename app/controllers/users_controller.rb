@@ -2,23 +2,7 @@ class UsersController < ApplicationController
   
   load_and_authorize_resource 
   
-  def admin
-    @user = User.find(params[:id])
-    @user.role="admin"
-    @user.save
-  end
-  
-  def company_admin
-     @user = User.find(params[:id])
-      @user.role="company_admin"
-      @user.save
-  end
-  
-  def employee
-     @user = User.find(params[:id])
-      @user.role="employee"
-      @user.save
-  end
+
   
   def index
     @users = User.all
@@ -62,11 +46,9 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    @user.role = "employee"
     respond_to do |format|
       if @user.save
-        sign_in @user
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        @user.send_validation        
         format.json { render json: @user, status: :created, location: @user }
         
       else
@@ -76,6 +58,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def validate
+#    user=User.find_by_name(params[:token])
+    user.role="employee"
+    user.save
+    sign_in(user)
+    
+    
+  end
   # PUT /users/1
   # PUT /users/1.json
   def update

@@ -1,6 +1,6 @@
 require 'ostruct'
 require 'yaml'
-::Secrets = OpenStruct.new(YAML.load_file(File.expand_path('../secrets.yml', __FILE__))[Rails.env])
+#::Secrets = OpenStruct.new(YAML.load_file(File.expand_path('../secrets.yml', __FILE__))[Rails.env])
 
 # ::GlobalConfig = OpenStruct.new(YAML.load_file("#{RAILS_ROOT}/config/global_config.yml")[RAILS_ENV])
 

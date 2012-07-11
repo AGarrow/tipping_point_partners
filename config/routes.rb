@@ -13,6 +13,10 @@ TippingPointPartners::Application.routes.draw do
   get "linked_in/callback"
   
   resources :users
+  
+  match "/validate/:token" =>'users#validate', :as => 'validate'
+##  validate_users_url(:token => users.validation_token) ??
+  
   resources :sessions, only: [:new, :create, :destroy]
   resources :companies
   resources :password_resets
