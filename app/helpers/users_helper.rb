@@ -12,14 +12,14 @@ module UsersHelper
       user.email
     end
   end
-##  def avatar_for (user)
-##    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
-##      if gravatar_id == 40
-##        user.avatar
-##      else
-##        gravatar_for(user)
-##      end
-##  end
+  
+  def validation_sent?
+     !user.validation_token.nil?
+  end
+  
+  def validated?
+    !user.role.nil?
+  end
   
 
 end

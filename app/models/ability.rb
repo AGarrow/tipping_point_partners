@@ -20,6 +20,7 @@ class Ability
          can :update, User, :id => user.id
        else 
          can :create, User
+         can :read, User, :id => user.id
        end
        
        

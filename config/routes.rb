@@ -14,7 +14,7 @@ TippingPointPartners::Application.routes.draw do
   
   resources :users
   
-  match "/validate/:token" =>'users#validate', :as => 'validate'
+  match "/validate/:token" =>'pages#validate', :as => 'validate'
 ##  validate_users_url(:token => users.validation_token) ??
   
   resources :sessions, only: [:new, :create, :destroy]
@@ -27,6 +27,7 @@ TippingPointPartners::Application.routes.draw do
   match '/faqs',        to: 'pages#faqs'
   match '/contact',     to: 'pages#contact'
   match '/me',          to: 'pages#me'
+  match '/check_inbox', to: 'pages#check_inbox'
   
   match '/workspace',   to: 'users#index'
   match '/signup',      to: 'users#new'
