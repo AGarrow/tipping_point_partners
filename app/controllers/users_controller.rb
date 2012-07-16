@@ -46,26 +46,27 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    respond_to do |format|
-      if @user.save
-        @user.send_validation        
+    
+    if @user.save
+      sign_in(@user)
+      
+      respond_to do |format|
+        format.html { redirect_to @user }    
         format.json { render json: @user, status: :created, location: @user }
-        
-      else
+      end
+      
+    else
+      
+      respond_to do |format|
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+      
     end
+    
   end
 
-  def validate
-#    user=User.find_by_name(params[:token])
-    user.role="employee"
-    user.save
-    sign_in(user)
-    
-    
-  end
+
   # PUT /users/1
   # PUT /users/1.json
   def update

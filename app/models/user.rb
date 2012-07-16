@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
 
    before_create do |user|
      generate_token(:remember_token)
+     send_validation
    end
   
    
@@ -51,7 +52,6 @@ class User < ActiveRecord::Base
    def send_validation 
      generate_token(:validation_token)
      self.validation_sent_at = Time.zone.now
-     save!
      UserMailer.registration_confirmation(self).deliver
    end
 

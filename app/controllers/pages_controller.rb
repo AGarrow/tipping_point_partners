@@ -1,17 +1,25 @@
 class PagesController < ApplicationController
   def home
     @user=current_user
-    if !signed_in?
-      redirect_to signin_path    
+    if signed_in?
+      @myCompany = Company.find(@user.company_id)    
     else
-    @myCompany = Company.find(@user.company_id) 
-    @companies = Company.all 
-    @companies.delete @myCompany
-    end 
+      redirect_to signin_path    
+    end
+      @companies = Company.all 
+      @companies.delete @myCompany 
   end
 
   def me
     @user= current_user
+  end
+  
+  def validate
+    user=User.find_by_validation_token(params[:token])
+    user.role="employee"
+    user.save
+    sign_in(user) 
+    redirect_to user
   end
 
   def my_company
@@ -24,4 +32,6 @@ class PagesController < ApplicationController
 
   def faqs
   end
+  
+
 end
