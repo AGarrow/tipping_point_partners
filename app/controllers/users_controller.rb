@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   load_and_authorize_resource 
-  
+  skip_authorize_resource :only => :validate
 
   
   def index
@@ -48,24 +48,26 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     
     if @user.save
-      sign_in(@user)
-      
+      sign_in(@user)    
       respond_to do |format|
         format.html { redirect_to @user }    
         format.json { render json: @user, status: :created, location: @user }
-      end
-      
-    else
-      
+      end     
+    else      
       respond_to do |format|
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-      
+      end    
     end
-    
   end
-
+  
+  def validate
+    user=User.find_by_validation_token(params[:token])
+    user.role="employee"
+    user.save
+    sign_in(user) 
+    redirect_to home_path
+  end
 
   # PUT /users/1
   # PUT /users/1.json

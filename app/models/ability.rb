@@ -18,9 +18,9 @@ class Ability
        elsif user.is? "employee"
          can :read, :all
          can :update, User, :id => user.id
-       else 
+       elsif user.is? nil
          can :create, User
-         can :read, User, :id => user.id
+
        end
        
        
