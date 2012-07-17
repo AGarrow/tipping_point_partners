@@ -2,23 +2,6 @@ class UsersController < ApplicationController
   
   load_and_authorize_resource 
   
-  def admin
-    @user = User.find(params[:id])
-    @user.role="admin"
-    @user.save
-  end
-  
-  def company_admin
-     @user = User.find(params[:id])
-      @user.role="company_admin"
-      @user.save
-  end
-  
-  def employee
-     @user = User.find(params[:id])
-      @user.role="employee"
-      @user.save
-  end
   
   def index
     @users = User.all
