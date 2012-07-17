@@ -14,13 +14,7 @@ class PagesController < ApplicationController
     @user= current_user
   end
   
-  def validate
-    user=User.find_by_validation_token(params[:token])
-    user.role="employee"
-    user.save
-    sign_in(user) 
-    redirect_to user
-  end
+
 
   def my_company
     @user= current_user

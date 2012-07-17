@@ -14,10 +14,12 @@ module UsersHelper
   end
   
   def validation_sent?
+     user= current_user
      !user.validation_token.nil?
   end
   
   def validated?
+    user=current_user
     !user.role.nil?
   end
   
