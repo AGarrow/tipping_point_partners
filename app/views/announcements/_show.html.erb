@@ -1,0 +1,21 @@
+<% announcement ||= @announcement %>
+<div class = "row-fluid">
+	<% if !announcement.company.avatar_file_name.nil?  %>
+	<div class = "span2">
+		<%= image_tag announcement.company.avatar.url(:thumb) %>
+	</div>
+	<div class="span9">
+		<h4><%= announcement.title %></h4>
+		<p><%= announcement.content %></p>
+	</div>
+	<% else %>
+	<h3><%= announcement.company.name %></h3>
+	<h4><%= announcement.title %></h4>
+	<p><%= announcement.content %></p>
+	<%end %>
+	<% if can? :destroy, announcement %>
+	<div class=" pull-right">
+		<%=  link_to raw('<i class="icon-remove"></i>'), announcement_path(announcement), :confirm => "Are you sure?", :method => :delete, :class=>"btn btn-danger" %>
+	</div>
+	<% end %>
+</div>

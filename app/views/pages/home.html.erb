@@ -1,29 +1,80 @@
 <% provide(:title, "Home") %>
+<h1>Welcome <%= @user.first_name %>!</h1>
 
-<h1>Welcome <%= name(@user) %>!</h1>
+<div class="container">
+	<div class="row">
 
+		<div id="companiesCarousel" class="carousel slide span6">
+			<!-- Carousel Items-->
 
-
-<div id="companiesCarousel" class="carousel slide">
-	<!-- Carousel Items-->
-
-	<div class="carousel-inner">		
-			<div class="active item">
-				<% if @myCompany.avatar? %>
-					<%=image_tag @myCompany.avatar.url %>
-				<% else %>
-					<div class="hero-unit">
-						<h1><%= @myCompany.name %></h1>
+			<div class="carousel-inner">		
+					<div class="active item">
+						<% if @myCompany.avatar? %>
+							<%=image_tag @myCompany.avatar.url(:medium) %>
+						<% else %>
+							<div class="hero-unit">
+								<h1><%= @myCompany.name %></h1>
+							</div>
+						<% end %>
 					</div>
-				<% end %>
+					<% @companies.each do |company| %>
+						<% if company.avatar? %>
+					<div class ="item"><%= image_tag company.avatar.url(:medium) %></div>
+						<% end %>
+					<% end %>		
 			</div>
-			<% @companies.each do |company| %>
-				<% if company.avatar? %>
-			<div class ="item"><%= image_tag company.avatar.url %></div>
-				<% end %>
-			<% end %>		
+			<!-- Carousel nav-->
+			<a class="carousel-control left" href="#companiesCarousel" data-slide="prev">&lsaquo;</a>
+			<a class="carousel-control right" href="#companiesCarousel" data-slide="next">&rsaquo;</a>
+		</div>
+		<div class="span6">
+			<p>Truth. Inspiration. Distillation. Execution. We are experienced entrepreneurs who work on projects where technology can address societal or industry needs, solve meaty problems, or satisfy deep cravings. Or just for fun. We work as a team to design, build and operate companies as co-founder or outsourced incubator. We also provide a la carte advice and interim management in strategy, planning, finance, product management and business development.</p>
+		</div>
 	</div>
-	<!-- Carousel nav-->
-	<a class="carousel-control left" href="#companiesCarousel" data-slide="prev">&lsaquo;</a>
-	<a class="carousel-control right" href="#companiesCarousel" data-slide="next">&rsaquo;</a>
+	<div class="row well">
+		<h2>
+			Announcements
+			<% if can? :create, Announcement %>
+			<div class = "pull-right">
+				<a class="btn btn-success" data-toggle="modal" href="#announcementModal" ><i class = "icon-edit"></i></a>
+				</div>
+				<%end %>
+			</h2>
+		<div data-spy="scroll">	
+		<%  @announcements.each do |announcement| %>
+			<%= render :partial =>'announcements/show', :locals => {:announcement => announcement} %>
+		<% end %>
+		</div>
+		
+		
+	</div>
+
 </div>
+
+
+<div class="modal hide" id="announcementModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Make an announcement!</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for(@make_announcement) do |f| %>
+
+	<%= f.label :title  %>
+	<%= f.text_field :title %>
+	<%= f.label :content %>
+	<%= f.text_area :content, :rows => "4", :cols => "" %>
+
+
+
+
+
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+	<%= f.submit :class => "btn btn-primary" %>
+	<% end %>
+  </div>
+</div>
+
+
