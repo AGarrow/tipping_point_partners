@@ -59,7 +59,7 @@
 										<%= e.collection_select :role, User::ROLES, :to_s, :humanize, {:disabled => "admin"}, {"style"=> "width:100px", "class"=>"btn"} %> 
 										
 										<%= e.submit "Update", :class =>"btn" %>
-										<%= link_to "Remove", user_path(employee), :confirm => "Are you sure?", :method => :delete, :class=>"btn btn-danger" %>
+										<%= link_to raw('<i class="icon-remove"></i>'), user_path(employee), :confirm => "Are you sure?", :method => :delete, :class=>"btn btn-danger" %>
 									<% end %>
 										</div>
 									

@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   def home
     @user=current_user
+    @make_announcement = Announcement.new
+    @announcements = Announcement.all
     if signed_in?
       @myCompany = Company.find(@user.company_id)    
     else

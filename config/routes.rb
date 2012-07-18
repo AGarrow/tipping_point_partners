@@ -5,6 +5,10 @@ TippingPointPartners::Application.routes.draw do
 
 
 
+  get "announcements/create"
+
+  get "announcements/destroy"
+
   get "sessions/new"
   get "sessions/create"
   get "sessions/destroy"
@@ -14,13 +18,13 @@ TippingPointPartners::Application.routes.draw do
   
   resources :users
   
-  match "/validate/:token" =>'pages#validate', :as => 'validate'
+  match "/validate/:token" =>'users#validate', :as => 'validate'
 ##  validate_users_url(:token => users.validation_token) ??
   
   resources :sessions, only: [:new, :create, :destroy]
   resources :companies
   resources :password_resets
-
+  resources :announcements, only: [:create, :destroy]
   root to: 'pages#home'
   
   match "/home",        to: "pages#home"   
