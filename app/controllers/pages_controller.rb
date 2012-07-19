@@ -30,5 +30,11 @@ require 'will_paginate/array'
   def faqs
   end
   
+  def kyocera_mac
+  end
+  
+  def kyocera_windows
+  end
+  
 
 end

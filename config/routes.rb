@@ -31,7 +31,8 @@ TippingPointPartners::Application.routes.draw do
   match '/faqs',        to: 'pages#faqs'
   match '/contact',     to: 'pages#contact'
   match '/me',          to: 'pages#me'
-  match '/check_inbox', to: 'pages#check_inbox'
+  match '/print_mac',   to: 'pages#kyocera_mac'
+  match '/print_windows',to:'pages#kyocera_windows'
   
   match '/workspace',   to: 'users#index'
   match '/signup',      to: 'users#new'

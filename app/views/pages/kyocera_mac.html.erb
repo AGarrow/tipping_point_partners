@@ -1,0 +1,31 @@
+<h1>Kyocera CS-255C Printer Driver Installation Instructions</h1>
+<h2>For Mac</h2>
+
+<ol>
+	<li>Install the attached dmg file “<b>Kyocera OS X 10.5+ Web build 2011.08.09.mpkg.dmg</b>”</li>
+	<li>Open System Preferences, and choose “<b>Print & Fax</b>”</li>
+	<li>Click the "<b>+</b>" button in the lower left to add a new printer.</li>
+	<li>From the top of the menu, select the “<b>IP</b>” tab, and choose “<b>Line Printer Daemon</b>” from the “<b>Protocol</b>” drop down menu. Enter the IP address – <b>10.100.77.10</b></li>
+	<li>Choose “<b>Select Printer Software</b>” from the “Print Using” dropdown.</li>
+	<li>Select the driver (that you installed previously” for the Kyocera CS-255C, then hit “ok”</li>
+	<li>Choose “<b>Add</b>” to create the printer profile. A dialogue will prompt you to configure certain settings, such as paper tray management, but the default settings should be fine, so hit “ok” unless you want to change any of those settings. If you desire, you can change the name of the printer profile to something other than the IP address, which is the default – that is a superficial element, and entirely up to the user.</li>
+	<li>In order to print, you must use your unique user ID, which is a 7-digit code. yours is: <%= current_user.company.print_code %>, which is how we track color pages printed in order to send you an invoice quarterly.
+		<ol>
+			<li>Once you have a document to print, or test print, choose “<b>Print</b>” from the file menu, as per usual.</li>
+			<li>In the print dialogue that appears, select “<b>Job Accounting</b>” from the dropdown menu halfway down (directly below the “Pages” selection options) **If you can not see this option, toggle the blue arrow to the right of the printer name, at the top of the dialogue to open the full screen.
+			</li>
+			<li>In the “<b>Job Accounting</b>” configuration pane, check the “<b>Job Accounting</b>” box, and in the “<b>Account ID</b>” field, enter the company code that you have been given.
+			</li>
+			<li>In order to save this information, and create your default printing settings, now go switch to “<b>Printer Features</b>” in the same dropdown menu (where you currently have “Job Accounting” selected)
+			</li>
+			<li>In “<b>Printer Features</b>”, select “<b>Graphics 1</b>” in “<b>Feature Sets</b>”, and then select “<b>Black & White</b>” in “<b>Color Mode</b>” – this will set the default of printing in black & white, not full color.
+			</li>
+			<li>Once you have done that, toggle back to “<b>Job Accounting</b>”, verify that your Account ID is still accurately entered, and now you can save.
+			</li>
+			<li>In the “<b>Presets</b>” dropdown menu, select “<b>Save As…</b>”, and name your new default print setting “B/W”, click “ok” – now you can print!
+			</li>
+			<li>If you want to have a full-color default as well ($.09/ page), follow the same steps, selecting “Full color” in color mode, and saving the preset as “color”
+			</li>
+		</ol>
+	</li>
+</ol>
