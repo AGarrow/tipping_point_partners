@@ -1,0 +1,53 @@
+<% provide(:title, "Print") %>
+<h1>Kyocera CS-255C Printer Driver Installation Instructions</h1>
+<h2>For Windows</h2>
+
+<p><b>Custom Mode</b> applies to driver installation for a USB or network connection. The installation wizard can discover printers that are turned on, and connected by USB and network cable, or you can manually select the driver from drivers that are available. You can specify the printer port, fonts, and the utilities you want to install. Printer drivers that ship with Windows operating systems are called minidrivers. The minidriver is available separately for PCL and KPDL and provides basic support for your printer. The KX XPS driver is only available for printing systems used with Windows 7, Windows Vista, or Windows Server 2008. The XPS driver is discussed in the Device Settings chapter. Minidriver functionality is not documented in this user guide.
+</p>
+
+</br>
+<h3>Installing in Custom Mode with a Network Connection using
+Discover</h3>
+</br>
+<p>This section describes the custom installation procedure of the driver software in Windows operating systems using a network connection.</p>
+<ol>
+	<li>Double Click the "<b>.exe</b>" file </li>
+	<li>Accept the License agreement</li>
+	<li>Click "Next", then again (twice total)</li>
+	<li>Click "Custom Select"</li>
+	<li>Click "Next"</li>
+	<li>Click "Kyocera CS 255c"</li>
+	<li>Click "Next"</li>
+	<li>Click "Add Port"</li>
+	<li>Click "Next"</li>
+	<li>Printer Name -Type in "10.100.77.10"</li>
+	<li>Click "Next" twice</li>
+	<li>Finish </li>
+	<li>Click "Next" twice</li>
+	<li>Click "install" </li>
+	<li>Click "Cancel"</li>
+	<li>Uncheck "Enable Status Monitor"</li>
+	<li>Click "administrator"</li>
+	<li>Click "Job Accounting"</li>
+	<li>Check "Job Accounting"</li>
+	<li>Click "User Specific Account ID"</li>
+	<li>Type in <%= current_user.company.print_code %></li>
+	<li>Click "OK" twice</li>
+	<li>Click Finish</li>	
+</ol>
+
+</br>
+<h3>Setting up Job Accounting -MANDATORY IN ORDER TO PRINT</h3>
+<ol>
+	<li>Click "Start"</li>
+	<li>Settings</li>
+	<li>Click "Printers and Faxes"</li>
+	<li>Right Click on "Appropriate printer"</li>
+	<li>Click "properties"</li>
+	<li>Click "Device Setting"</li>
+	<li>Click "Administrator"</li>
+	<li>Click "Job Accounting"</li>
+	<li>Click "Use Specific Account ID"</li>
+	<li>Input your account # (<%=current_user.company.print_code %>)</li>
+	<li>Click "OK"</li>
+</ol>

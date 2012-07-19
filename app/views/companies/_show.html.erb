@@ -14,7 +14,7 @@
 				<h2>
 					<%= company.name %>
 				
-				<% if current_user.company = company %>
+				<% if current_user.company == company %>
 				</br>
 				<small>print code: <%= company.print_code %></small>
 				<% end %>
