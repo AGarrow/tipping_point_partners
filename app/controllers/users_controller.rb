@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   
   load_and_authorize_resource 
-  
-  
+
+  skip_authorize_resource :only => :validate
+
   def index
     @users = User.all
     @first_last = User.all.sort_by(&:first_name)
@@ -45,18 +46,27 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    @user.role = "employee"
-    respond_to do |format|
-      if @user.save
-        sign_in @user
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+    
+    if @user.save
+      sign_in(@user)    
+      respond_to do |format|
+        format.html { redirect_to @user }    
         format.json { render json: @user, status: :created, location: @user }
-        
-      else
+      end     
+    else      
+      respond_to do |format|
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+      end    
     end
+  end
+  
+  def validate
+    user=User.find_by_validation_token(params[:token])
+    user.role="employee"
+    user.save
+    sign_in(user) 
+    redirect_to home_path
   end
 
   # PUT /users/1

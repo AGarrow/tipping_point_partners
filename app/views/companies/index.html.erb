@@ -21,6 +21,7 @@
 				</div>
 				<% tab_number+=1 %>
 			<% end %>
+
 			<% if current_user.is? "admin"
 				@company = Company.new%>
 				<div class="tab-pane acive" id="tab<%=tab_number+1%>">
@@ -28,6 +29,7 @@
 				</div>
 			<% end %>
 		</div>
+		
 </div>
 
 

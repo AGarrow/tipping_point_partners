@@ -3,9 +3,9 @@ require 'spec_helper'
 describe PagesController do
 
   describe "GET 'home'" do
-    it "returns http success" do
+    it "should have the content 'Welcome'" do
       get 'home'
-      response.should be_success
+      page.should have_content ('Welcome')
     end
   end
 

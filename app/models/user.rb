@@ -24,22 +24,34 @@ class User < ActiveRecord::Base
       user.first_name=first_name.titleize
       user.last_name=last_name.titleize
    end
+   
+   before_validation do |user|
+     assign_company
+   end
 
    before_create do |user|
      generate_token(:remember_token)
+     send_validation   
    end
   
    
-    validates :first_name,:last_name, presence: true, length: { maximum: 50 }
+    validates :first_name,:last_name, presence: true, length: { maximum: 20 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence:   true,
                       format:     { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
     validates :password, presence: true, length: { minimum: 6 }, :if => :should_validate_password?
-    validates :password_confirmation,:company_id, presence: true , :if => :should_validate_password?
-
+    validates :password_confirmation, presence: true , :if => :should_validate_password?
+    validates :company_id, presence: true
    
 
+
+    def assign_company
+      split_email = self.email.to_s.partition"@"
+      if extension = split_email[2]
+        self.company = Company.find_by_email_extension(extension) 
+      end     
+    end
 
 #for authorization using CanCan
     
@@ -47,7 +59,12 @@ class User < ActiveRecord::Base
       string == (self.role)
     end
 
-#for editing user profiles and resetting passwords    
+#for editing user profiles and resetting passwords 
+   def send_validation 
+     generate_token(:validation_token)
+     self.validation_sent_at = Time.zone.now
+     UserMailer.registration_confirmation(self).deliver
+   end
 
     def should_validate_password?
       updating_password || new_record?

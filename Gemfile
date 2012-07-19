@@ -14,11 +14,11 @@ gem 'aws-sdk'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 	gem 'pg'
-
 	gem 'bootstrap-sass','2.0.0'
-  	gem 'bootstrap-sass-rails'
-  	gem 'twitter-bootstrap-rails'
-gem 'json'
+	gem 'bootstrap-sass-rails'
+	gem 'twitter-bootstrap-rails'
+  gem 'json'
+  gem 'will_paginate', '~>3.0'
 
 group :assets do
 
@@ -32,6 +32,13 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'webrat'
 	gem 'rspec-rails'
+	gem 'factory_girl'
+
+end
+
+group :test do
+	gem 'capybara', '1.1.2'
+	gem 'growl'
 
 end
 

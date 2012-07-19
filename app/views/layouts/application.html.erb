@@ -12,6 +12,17 @@
 <%= render 'layouts/header' %>
 <div class="container">
 
+<% if signed_in? && !validated? && validation_sent? %>
+	<div class = "modal" id = "welcomeModal">
+		<div class = "modal-header">
+
+			<h3>Activate Account</h3>
+		</div>
+		<div class = "modal-body">
+			<p> An email has been sent to the address you provided. Please check your inbox for an email to activate your account.</p>
+		</div>
+	</div>
+<% end %>
 <%= yield %>
 </div>
 </body>
