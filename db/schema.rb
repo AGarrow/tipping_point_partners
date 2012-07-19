@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120718160440) do
+ActiveRecord::Schema.define(:version => 20120719183559) do
 
   create_table "announcements", :force => true do |t|
     t.string   "content"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20120718160440) do
     t.text     "blurb"
     t.string   "email_extension"
   end
+
+  add_index "companies", ["email_extension"], :name => "index_companies_on_email_extension"
 
   create_table "users", :force => true do |t|
     t.string   "email"

@@ -12,8 +12,9 @@
       <%= f.label :password %>
       <%= f.password_field :password %>
 	<div>
-		<%= link_to "forgot password?", new_password_reset_path, class: "btn " %>
+	
 	<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+		<%= link_to "forgot password?", new_password_reset_path %>
 	 <% end %>
 			
 	</div>	    
@@ -23,7 +24,7 @@
 	 <p>
 	 	New to the space? Haven't yet registered? Create an account to introduce yourself to others here at Tipping Point Partners! note: The email address you provide will be posted for others in the workspace to see.
 	 </p>
-	 <%= link_to "Sign up now!", signup_path, class: "btn btn-large" %>
+	 <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-success" %>
 </div>
 
   

@@ -6,6 +6,7 @@ class Company < ActiveRecord::Base
   
   validates :name, :print_code, :email_extension, presence: true, uniqueness: true
   
+  
   before_save do |company|
     company.name = company.name.titleize
   end

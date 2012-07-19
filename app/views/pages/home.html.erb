@@ -12,9 +12,9 @@
 						<% if @myCompany.avatar? %>
 							<%=image_tag @myCompany.avatar.url(:medium) %>
 						<% else %>
-							<div class="hero-unit">
-								<h1><%= @myCompany.name %></h1>
-							</div>
+
+								<h3><%= @myCompany.name %></h3>
+
 						<% end %>
 					</div>
 					<% @companies.each do |company| %>
@@ -40,11 +40,17 @@
 				</div>
 				<%end %>
 			</h2>
-		<div data-spy="scroll">	
+
 		<%  @announcements.each do |announcement| %>
 			<%= render :partial =>'announcements/show', :locals => {:announcement => announcement} %>
 		<% end %>
-		</div>
+		
+
+			<ul class="pager">
+			<%= will_paginate @announcements, :page_links => false %>
+			</ul>
+
+
 		
 		
 	</div>

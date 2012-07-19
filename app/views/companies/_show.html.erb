@@ -13,6 +13,11 @@
 		<div <% if company.avatar? %> class="span8"<% end %>>
 				<h2>
 					<%= company.name %>
+				
+				<% if current_user.company = company %>
+				</br>
+				<small>print code: <%= company.print_code %></small>
+				<% end %>
 				</h2>
 		</div>		
 		<div class="span2 pull-right">

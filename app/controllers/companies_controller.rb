@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
   # GET /companies.json
     
   def index
-    @companies = Company.all
+    @companies = Company.all.sort_by(&:name)
 
     respond_to do |format|
       format.html # index.html.erb

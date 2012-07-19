@@ -18,6 +18,7 @@ gem 'aws-sdk'
 	gem 'bootstrap-sass-rails'
 	gem 'twitter-bootstrap-rails'
   gem 'json'
+  gem 'will_paginate', '~>3.0'
 
 group :assets do
 
