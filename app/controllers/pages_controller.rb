@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
+require 'will_paginate/array'
   def home
     @user=current_user
     @make_announcement = Announcement.new
-    @announcements = Announcement.all
+    @announcements = Announcement.paginate(:page => params[:page])
     if signed_in?
       @myCompany = Company.find(@user.company_id)    
     else

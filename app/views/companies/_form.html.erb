@@ -12,18 +12,19 @@
 	    </div>
 	  <% end %>
 		
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+		<br />
 		<%= f.label :email_extension %>
-		<%= f.text_field :email_extension %>
+		@<%= f.text_field :email_extension %>
+		<br />
+		<%= f.label :print_code %>
+	    <%= f.text_field :print_code %>
 	
-		<%= f.label :Company_Logo %>
+		<%= f.label :Logo %>
 		<%= f.file_field :avatar %>
 	  <div class="field">
-	    <%= f.label :name %><br />
-	    <%= f.text_field :name %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :print_code %><br />
-	    <%= f.text_field :print_code %>
+	    
 	  </div>
 	  <div class="field">		
 	  	<%= f.label :blurb %>

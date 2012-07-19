@@ -6,4 +6,6 @@ class Announcement < ActiveRecord::Base
   validates :company_id, :content, :title, presence: true
   
   default_scope order: 'announcements.created_at DESC'
+  
+  self.per_page = 25
 end

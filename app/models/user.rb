@@ -24,10 +24,14 @@ class User < ActiveRecord::Base
       user.first_name=first_name.titleize
       user.last_name=last_name.titleize
    end
+   
+   before_validation do |user|
+     assign_company
+   end
 
    before_create do |user|
      generate_token(:remember_token)
-     send_validation
+     send_validation   
    end
   
    
@@ -41,6 +45,13 @@ class User < ActiveRecord::Base
     validates :company_id, presence: true
    
 
+
+    def assign_company
+      split_email = self.email.to_s.partition"@"
+      if extension = split_email[2]
+        self.company = Company.find_by_email_extension(extension) 
+      end     
+    end
 
 #for authorization using CanCan
     

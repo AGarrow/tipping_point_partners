@@ -10,17 +10,15 @@
 	<%= u.label :last_name %>
 	<%= u.text_field :last_name %>
 
-	<%= u.label :email %>
+	<%= u.label "email (you must use your company email address)" %>
 	<%= u.text_field :email %>
 
-	<%= u.label :password %>
+	<%= u.label "password (6 characters or more)" %>
 	<%= u.password_field :password %>
 
 	<%= u.label :password_confirmation %>
 	<%= u.password_field :password_confirmation %>
 
-	<%= u.label :company_id %>
-	<%= u.collection_select :company_id, Company.all, :id, :name, {:include_blank => true}%>
 
 	<%= u.label :avatar, "picture" %>
 	<%= u.file_field :avatar %>

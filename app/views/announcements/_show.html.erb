@@ -1,5 +1,5 @@
 <% announcement ||= @announcement %>
-<div class = "row-fluid">
+<div class = "row-fluid" id="announcement">
 	<% if !announcement.company.avatar_file_name.nil?  %>
 	<div class = "span2">
 		<%= image_tag announcement.company.avatar.url(:thumb) %>
@@ -7,11 +7,17 @@
 	<div class="span9">
 		<h4><%= announcement.title %></h4>
 		<p><%= announcement.content %></p>
+		<p>	<small><%= time_ago_in_words(announcement.created_at) %> ago</small></p>
 	</div>
 	<% else %>
-	<h3><%= announcement.company.name %></h3>
-	<h4><%= announcement.title %></h4>
-	<p><%= announcement.content %></p>
+	<div class="span2">
+		<h3><%= announcement.company.name %></h3>
+	</div>
+	<div class="span9">
+		<h4><%= announcement.title %></h4>
+		<p><%= announcement.content %></p>
+		<p>	<small><%= time_ago_in_words(announcement.created_at) %> ago</small></p>
+		</div>
 	<%end %>
 	<% if can? :destroy, announcement %>
 	<div class=" pull-right">
