@@ -4,6 +4,11 @@
 .carousel .item > img {display: inline-block;}
 
 
+ #announcement{
+padding: 10px 0;
+border-top: 1px solid #e8e8e8
+}
+
 #welcome{
 margin:0 auto;
 float: none;
@@ -13,6 +18,8 @@ text-align: left;
 padding: none;
 width: 22%;
 height: 220px}
+
+
 
 /* mixins, variables, etc. */
 
@@ -57,7 +64,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.7em;
+  font-size: 2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -65,9 +72,11 @@ h2 {
   color: $grayLight;
 }
 
+
+
 p {
   font-size: 1.1em;
-  line-height: 1.7em;
+  line-height: 1.2em;
 }
 
 

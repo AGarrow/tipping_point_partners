@@ -5,6 +5,10 @@ TippingPointPartners::Application.routes.draw do
 
 
 
+  get "announcements/create"
+
+  get "announcements/destroy"
+
   get "sessions/new"
   get "sessions/create"
   get "sessions/destroy"
@@ -13,16 +17,21 @@ TippingPointPartners::Application.routes.draw do
   get "linked_in/callback"
   
   resources :users
+  
+  match "/validate/:token" =>'users#validate', :as => 'validate'
+##  validate_users_url(:token => users.validation_token) ??
+  
   resources :sessions, only: [:new, :create, :destroy]
   resources :companies
   resources :password_resets
-
+  resources :announcements, only: [:create, :destroy]
   root to: 'pages#home'
   
   match "/home",        to: "pages#home"   
   match '/faqs',        to: 'pages#faqs'
   match '/contact',     to: 'pages#contact'
   match '/me',          to: 'pages#me'
+  match '/check_inbox', to: 'pages#check_inbox'
   
   match '/workspace',   to: 'users#index'
   match '/signup',      to: 'users#new'

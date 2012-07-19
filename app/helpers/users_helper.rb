@@ -1,4 +1,6 @@
 module UsersHelper
+  
+
   def name(user)
     name = [user.first_name,user.last_name].join(' ')
   end
@@ -10,14 +12,16 @@ module UsersHelper
       user.email
     end
   end
-##  def avatar_for (user)
-##    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
-##      if gravatar_id == 40
-##        user.avatar
-##      else
-##        gravatar_for(user)
-##      end
-##  end
+  
+  def validation_sent?
+     user= current_user
+     !user.validation_token.nil?
+  end
+  
+  def validated?
+    user=current_user
+    !user.role.nil?
+  end
   
 
 end

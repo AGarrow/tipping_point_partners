@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120622162155) do
+ActiveRecord::Schema.define(:version => 20120719183559) do
+
+  create_table "announcements", :force => true do |t|
+    t.string   "content"
+    t.string   "title"
+    t.integer  "company_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "announcements", ["company_id", "created_at"], :name => "index_announcements_on_company_id_and_created_at"
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -23,7 +33,10 @@ ActiveRecord::Schema.define(:version => 20120622162155) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.text     "blurb"
+    t.string   "email_extension"
   end
+
+  add_index "companies", ["email_extension"], :name => "index_companies_on_email_extension"
 
   create_table "users", :force => true do |t|
     t.string   "email"
@@ -46,8 +59,11 @@ ActiveRecord::Schema.define(:version => 20120622162155) do
     t.string   "asecret"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "validation_token"
+    t.datetime "validation_sent_at"
   end
 
+  add_index "users", ["company_id"], :name => "index_users_on_company_id"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 

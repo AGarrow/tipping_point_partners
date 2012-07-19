@@ -15,11 +15,14 @@ class Ability
          can :destroy, User do |employee|
            employee.try(:company_id) == current_user.company_id
          end 
+         can :create, Announcement
+         can :destroy, Announcement, :company_id => user.company_id
        elsif user.is? "employee"
          can :read, :all
          can :update, User, :id => user.id
-       else 
+       elsif user.is? nil
          can :create, User
+
        end
        
        
