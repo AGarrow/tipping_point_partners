@@ -20,17 +20,14 @@
 				<% end %>
 				</h2>
 		</div>		
-		<div class="span2 pull-right">
+		<div class=" pull-right">
 			<% if can? :manage, company %>
 			<button class="btn"><%= link_to "edit", edit_company_path(company) %></button>
 			<% end %>
 		</div>
-
 	</div>
-	<div class="container">
 		<p><%= company.blurb %></p>
-	</div>	
-	
+		
 	<% company.users.sort_by!{|user| user.last_name}.each do |employee|  %>
 			<% if ((cannot? :manage, company) && employee.avatar?) %>
 				
