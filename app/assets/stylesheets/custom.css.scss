@@ -15,11 +15,20 @@ float: none;
 text-align: left;
 }
 #card{ float: left;
+position: relative;
 padding: none;
 width: 22%;
 height: 220px}
 
+#display_photo{
+position: relative;
+}
 
+#display_photo_edit_button{
+position: absolute;
+top: 5px;
+right: 20px
+}
 
 /* mixins, variables, etc. */
 
