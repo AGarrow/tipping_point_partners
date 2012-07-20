@@ -10,7 +10,7 @@
 			<div class="carousel-inner">		
 					<div class="active item">
 						<% if @myCompany.avatar? %>
-							<%=image_tag @myCompany.avatar.url(:medium) %>
+							<%=image_tag @myCompany.avatar.url(:large) %>
 						<% else %>
 
 								<h3><%= @myCompany.name %></h3>
@@ -19,7 +19,7 @@
 					</div>
 					<% @companies.each do |company| %>
 						<% if company.avatar? %>
-					<div class ="item"><%= image_tag company.avatar.url(:medium) %></div>
+					<div class ="item"><%= image_tag company.avatar.url(:large) %></div>
 						<% end %>
 					<% end %>		
 			</div>
@@ -28,7 +28,14 @@
 			<a class="carousel-control right" href="#companiesCarousel" data-slide="next">&rsaquo;</a -->
 		</div>
 		<div class="span6">
-			<p>Truth. Inspiration. Distillation. Execution. We are experienced entrepreneurs who work on projects where technology can address societal or industry needs, solve meaty problems, or satisfy deep cravings. Or just for fun. We work as a team to design, build and operate companies as co-founder or outsourced incubator. We also provide a la carte advice and interim management in strategy, planning, finance, product management and business development.</p>
+			<p>
+					Truth. Inspiration. Distillation. Execution. We are experienced entrepreneurs who work on projects where technology can address societal or industry needs, solve meaty problems, or satisfy deep cravings. Or just for fun. We work as a team to design, build and operate companies as co-founder or outsourced incubator. We also provide a la carte advice and interim management in strategy, planning, finance, product management and business development.
+		<br></br>
+			Tipping Point is not a typical venture firm or incubator. Instead, we craft partnerships with entrepreneurs specific to their needs and resources. In that sense, you can think of us more as as institutional co-founder rather than an investor or service provider.
+		<br></br>
+			To that end, we look to partner with driven and experienced entrepreneurs creating innovative products and significant value.
+
+				</p>
 		</div>
 	</div>
 	<div class="row well">
