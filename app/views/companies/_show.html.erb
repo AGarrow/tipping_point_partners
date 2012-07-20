@@ -29,10 +29,12 @@
 		<p><%= company.blurb %></p>
 		
 	<% company.users.sort_by!{|user| user.last_name}.each do |employee|  %>
-			<% if ((cannot? :manage, company) && employee.avatar?) %>
+			<% if employee.avatar? %>
 				
 				<div id="card" class="span*">
-					<div ><%=link_to (image_tag employee.avatar.url(:small)),employee  %></div>
+					<div ><%=link_to (image_tag employee.avatar.url(:small)),employee,:id => "display_photo"  %>
+						<div class="btn btn-info" data-toggle="modal" href=#userEditModal id="display_photo_edit_button"><i class="icon-edit"></i></div>
+						</div>
 					<div  >
 
 						<ul class="unstyled">
@@ -40,7 +42,6 @@
 							<li><%=link_to name(employee), employee %></li>	
 							<li><%=link_to list_email(employee), employee %></li>	
 							<li><%=employee.phone %></li>
-							
 						</ul>
 						
 					</div>
@@ -54,27 +55,31 @@
 						    <td><%= link_to name(employee), employee %></td>
 						    <td><%= link_to employee.email, employee %></td>
 							<td><%= employee.phone %></td>
-							<% if can? :manage, company %>
-								<td class="inline">	
-									<%= form_for(employee, :html=>{:class=>"pull-right"}) do |e| %>	
-										<div class="btn-group">		
-										<%= e.collection_select :role, User::ROLES, :to_s, :humanize, {:disabled => "admin"}, {"style"=> "width:100px", "class"=>"btn"} %> 
-										
-										<%= e.submit "Update", :class =>"btn" %>
-										<%= link_to raw('<i class="icon-remove"></i>'), user_path(employee), :confirm => "Are you sure?", :method => :delete, :class=>"btn btn-danger" %>
-									<% end %>
-										</div>
-									
-									
-									
-								</td>
-				
-							<% end %>
+							<td><div class="btn btn-info pull-right" data-toggle="modal" href=#userEditModal><i class="icon-edit"></i></div></td>
 					    </tr>
-			<%end %>
-			
-	<% end %>
-	
+
+
+						<div class= "modal hide" id="userEditModal">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">×</button>
+								<h3><%= name(employee) %></h3>
+							</div>
+							<div class="modal-body">
+								<%= form_for(employee, :html=>{:class=>"pull-right"}) do |e| %>	
+									<div class="btn-group">		
+									<%= e.collection_select :role, User::ROLES, :to_s, :humanize, {:disabled => "admin"}, {"style"=> "width:100px", "class"=>"btn"} %> 
+
+									<%= e.submit "Update", :class =>"btn" %>
+									<%= link_to raw('<i class="icon-remove"></i>'), user_path(employee), :confirm => "Are you sure?", :method => :delete, :class=>"btn btn-danger" %>
+								<% end %>
+							</div>
+						</div>			
+	<%end %>
+
+<% end %>	
 
 </table>
 </div>
+
+
+
