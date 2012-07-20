@@ -4,8 +4,8 @@ class Company < ActiveRecord::Base
   has_many :announcements, dependent: :destroy
   has_attached_file :avatar, :styles => { :large => "360x268>",:medium_ish => "160x120>", :medium => "200x200>", :thumb => "100x100>"}
   
-  validates :name, :print_code, :email_extension, presence: true, uniqueness: true
-  
+  validates :name, :email_extension, presence: true, uniqueness: true
+  validates :print_code, presence: true
   
   before_save do |company|
     company.name = company.name.titleize
