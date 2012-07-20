@@ -33,7 +33,7 @@
 				
 				<div id="card" class="span*">
 					<div ><%=link_to (image_tag employee.avatar.url(:small)),employee,:id => "display_photo"  %>
-						<div class="btn btn-info" data-toggle="modal" href=#userEditModal id="display_photo_edit_button"><i class="icon-edit"></i></div>
+						<div class="btn btn-info" data-toggle="modal" href=#<%= employee.id %>EditModal id="display_photo_edit_button"><i class="icon-edit"></i></div>
 						</div>
 					<div  >
 
@@ -55,11 +55,11 @@
 						    <td><%= link_to name(employee), employee %></td>
 						    <td><%= link_to employee.email, employee %></td>
 							<td><%= employee.phone %></td>
-							<td><div class="btn btn-info pull-right" data-toggle="modal" href=#userEditModal><i class="icon-edit"></i></div></td>
+							<td><div class="btn btn-info pull-right" data-toggle="modal" href=#<%= employee.id %>EditModal><i class="icon-edit"></i></div></td>
 					    </tr>
+			<%end %>			
 
-
-						<div class= "modal hide" id="userEditModal">
+						<div class= "modal hide" id="<%= employee.id %>EditModal">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">×</button>
 								<h3><%= name(employee) %></h3>
@@ -74,7 +74,7 @@
 								<% end %>
 							</div>
 						</div>			
-	<%end %>
+	
 
 <% end %>	
 
