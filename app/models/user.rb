@@ -26,7 +26,9 @@ class User < ActiveRecord::Base
    end
    
    before_validation do |user|
-     assign_company
+     if new_record?
+       assign_company
+     end
    end
 
    before_create do |user|
