@@ -4,8 +4,9 @@
 	  <aside class="span4 offset4 well">
 	    <section>
 	      <h1>
-	
+			<% if @user.avatar? %>
 			<%= image_tag @user.avatar.url %>
+			<% end %>
 	        <%= name(@user) %>
 	      </h1>
 			<h2>
