@@ -28,10 +28,6 @@
 			<%= u.label :email %>
 			<%= u.text_field :email %>
 
-
-			<%= u.label :company_id %>
-			<%= u.collection_select :company_id, Company.all, :id, :name, {:include_blank => true}%>
-
 			<%= u.label :phone %>
 			<%= u.text_field :phone %>
 
@@ -42,10 +38,10 @@
 			
 		
 	<div class="btn-group">
-	
+		
+		<%= u.submit :class => "btn"%>
 		<%= link_to "reset password" ,new_password_reset_path %>
-		<%= u.submit%>
-	
+			
 	</div>
 	<% end %>
 	</div>

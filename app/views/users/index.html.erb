@@ -19,10 +19,10 @@
 			  </tr>
 				<% @last_first.each do |user| %>	
 				<tr>
-					<td><%= name(user) %></td>
-					<td><%= user.email %></td>
-					<td><%= user.phone %></td>
-					<td><%= user.company.name %></td>
+					<td><%= link_to(name(user), user) %></td>
+					<td><%= link_to(user.email, user) %></td>
+					<td><%= link_to(user.phone, user) %></td>
+					<td><%= link_to(user.company.name, user.company) %></td>
 				</tr>
 
 			<% end %>
@@ -38,10 +38,10 @@
 			  </tr>
 				<% @first_last.each do |user| %>
 				<tr>
-					<td><%= name(user) %></td>
-					<td><%= user.email %></td>
-					<td><%= user.phone %></td>
-					<td><%= user.company.name %></td>
+					<td><%= link_to(name(user), user) %></td>
+					<td><%= link_to(user.email, user) %></td>
+					<td><%= link_to(user.phone, user) %></td>
+					<td><%= link_to(user.company.name, user.company) %></td>
 				</tr>
 				<% end %>
 			</table>	
@@ -57,10 +57,10 @@
 				  </tr>
 					<% @company_name.each do |user| %>
 					<tr>
-						<td><%= name(user) %></td>
-						<td><%= user.email %></td>
-						<td><%= user.phone %></td>
-						<td><%= user.company.name %></td>
+						<td><%= link_to(name(user), user) %></td>
+						<td><%= link_to(user.email, user) %></td>
+						<td><%= link_to(user.phone, user) %></td>
+						<td><%= link_to(user.company.name, user.company) %></td>
 					</tr>
 					<% end %>
 				</table>

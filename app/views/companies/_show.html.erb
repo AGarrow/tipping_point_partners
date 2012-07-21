@@ -40,7 +40,7 @@
 													
 							<li><%=link_to name(employee), employee %></li>	
 							<li><%=link_to list_email(employee), employee %></li>	
-							<li><%=employee.phone %></li>
+							<li><%=link_to(employee.phone, employee) %></li>
 						</ul>
 						
 					</div>
@@ -53,7 +53,7 @@
 			
 						    <td><%= link_to name(employee), employee %></td>
 						    <td><%= link_to employee.email, employee %></td>
-							<td><%= employee.phone %></td>
+							<td><%= link_to employee.phone, employee %></td>
 							<td><div class="btn btn-info pull-right" data-toggle="modal" href=#<%= employee.id %>EditModal><i class="icon-edit"></i></div></td>
 					    </tr>
 			<%end %>			
