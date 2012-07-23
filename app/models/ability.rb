@@ -11,7 +11,7 @@ class Ability
        elsif user.is? "company_admin"
          can :read, :all
          can :manage, Company, :id => user.company_id
-         can :update, User, :id => user.id
+         can :update, User, :company_id => user.company_id
          can :destroy, User do |employee|
            employee.try(:company_id) == current_user.company_id
          end 
