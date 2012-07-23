@@ -13,9 +13,7 @@ class User < ActiveRecord::Base
     :storage => :s3,
     :s3_credentials => "config/s3.yml",
     :path => "/:style/:id/:filename"
-  
-  ROLES = %w[admin company_admin employee ]
-  AVATAR_OPTIONS = %w[upload gravatar LinkedIn none]
+  ROLES = %w[admin company_admin employee]
 
     
      

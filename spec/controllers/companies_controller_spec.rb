@@ -23,15 +23,19 @@ describe CompaniesController do
   # This should return the minimal set of attributes required to create a valid
   # Company. As you add validations to Company, be sure to
   # update the return value of this method accordingly.
-  def valid_attributes
-    {}
+  def valid_attributes 
+    {
+     :name => 'tipping point partners',
+     :email_extension => 'tippingpointpartners.com',
+     :print_code => 1234567
+     }
   end
   
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # CompaniesController. Be sure to keep this updated too.
   def valid_session
-    {}
+    {   }
   end
 
   describe "GET index" do
