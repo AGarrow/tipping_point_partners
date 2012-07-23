@@ -21,7 +21,11 @@
 				<tr>
 					<td><%= link_to(name(user), user) %></td>
 					<td><%= link_to(user.email, user) %></td>
-					<td><%= link_to(user.phone, user) %></td>
+					<td>
+					<% if user.phone? %>	
+					<%= link_to(user.phone, user) %>
+					<% end %>
+					</td>
 					<td><%= link_to(user.company.name, user.company) %></td>
 				</tr>
 
@@ -40,7 +44,11 @@
 				<tr>
 					<td><%= link_to(name(user), user) %></td>
 					<td><%= link_to(user.email, user) %></td>
-					<td><%= link_to(user.phone, user) %></td>
+					<td>
+						<% if user.phone? %>	
+						<%= link_to(user.phone, user) %>
+						<% end %>
+					</td>
 					<td><%= link_to(user.company.name, user.company) %></td>
 				</tr>
 				<% end %>
@@ -59,7 +67,11 @@
 					<tr>
 						<td><%= link_to(name(user), user) %></td>
 						<td><%= link_to(user.email, user) %></td>
-						<td><%= link_to(user.phone, user) %></td>
+						<td>
+							<% if user.phone? %>	
+							<%= link_to(user.phone, user) %>
+							<% end %>
+						</td>
 						<td><%= link_to(user.company.name, user.company) %></td>
 					</tr>
 					<% end %>
