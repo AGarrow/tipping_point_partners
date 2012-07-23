@@ -32,7 +32,7 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'webrat'
 	gem 'rspec-rails'
-	gem 'factory_girl'
+	gem 'factory_girl_rails'
 
 end
 

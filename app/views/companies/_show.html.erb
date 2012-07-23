@@ -39,8 +39,10 @@
 						<ul class="unstyled">
 													
 							<li><%=link_to name(employee), employee %></li>	
-							<li><%=link_to list_email(employee), employee %></li>	
+							<li><%=link_to list_email(employee), employee %></li>
+							<% if employee.phone? %>	
 							<li><%=link_to(employee.phone, employee) %></li>
+							<% end %>
 						</ul>
 						
 					</div>
@@ -53,7 +55,9 @@
 			
 						    <td><%= link_to name(employee), employee %></td>
 						    <td><%= link_to employee.email, employee %></td>
+						<% if employee.phone? %>
 							<td><%= link_to employee.phone, employee %></td>
+							<% end %>
 							<td><div class="btn btn-info pull-right" data-toggle="modal" href=#<%= employee.id %>EditModal><i class="icon-edit"></i></div></td>
 					    </tr>
 			<%end %>			
@@ -66,6 +70,7 @@
 							<div class="modal-body">
 								<%= form_for(employee, :html=>{:class=>"pull-right"}) do |e| %>	
 									<div class="btn-group">		
+										
 									<%= e.collection_select :role, User::ROLES, :to_s, :humanize, {:disabled => "admin"}, {"style"=> "width:100px", "class"=>"btn"} %> 
 
 									<%= e.submit "Update", :class =>"btn" %>

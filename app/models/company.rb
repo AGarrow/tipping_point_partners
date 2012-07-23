@@ -13,11 +13,6 @@ class Company < ActiveRecord::Base
   
   validates :name, :email_extension, presence: true, uniqueness: true
   validates :print_code, presence: true
-  
-  before_save do |company|
-    company.name = company.name.titleize
-  end
-  
-
+  validates_length_of :print_code, :is => 7
   
 end

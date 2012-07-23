@@ -12,8 +12,8 @@
 						<% if @myCompany.avatar? %>
 							<%=image_tag @myCompany.avatar.url(:large) %>
 						<% else %>
-
-								<h3><%= @myCompany.name %></h3>
+							<div class="hero-unit"><h2><%= @myCompany.name %></h2></div>
+								
 
 						<% end %>
 					</div>
