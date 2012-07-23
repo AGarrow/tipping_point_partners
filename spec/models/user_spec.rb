@@ -3,7 +3,17 @@ require 'spec_helper'
 describe User do
   
   before do
-        @user = FactoryGirl.create(:employee)
+        @user = User.new( 
+          first_name:              'will',
+          last_name:               'werblow',
+          email:                   'will@tippingpointpartners.com',
+          password:                'please',
+          password_confirmation:   'please',
+          company_id:              1  
+          )
+        
+        
+        @company = FactoryGirl.create(:company)
   end
 
   subject {@user}
@@ -22,7 +32,8 @@ describe User do
   
   
   describe "return value of authenticate method" do
-    before {@user.save}
+    before {@user.save }
+
     let(:found_user) { User.find_by_email(@user.email) }
     
     describe "with valid password" do
@@ -37,8 +48,9 @@ describe User do
   end
   
   describe "password validations" do
-    it "should reject empty passwords" do
-      before {@user.password = @user.password_confirmation = " "}
+    
+    it "should reject empty passwords" do 
+      @user.password = @user.password_confirmation = " "
       it { should_not be_valid }
     end
 
