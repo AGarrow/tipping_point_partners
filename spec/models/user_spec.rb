@@ -49,9 +49,9 @@ describe User do
     end
     
     it "should assign user to a company" do
-      FactoryGirl.create(:appOrchard)
-      FactoryGirl.create(:perka)
-      email_extensions = %w[apporchard.com perka.com tippingpointpartners.com]
+      FactoryGirl.create(:company, :name => 'app orchard')
+      FactoryGirl.create(:company, :name => 'toaster oven')
+      email_extensions = %w[apporchard.com toasteroven.com tippingpointpartners.com]
       email_extensions.each do |extension|
         user = @user.dup
         user.company_id = nil
