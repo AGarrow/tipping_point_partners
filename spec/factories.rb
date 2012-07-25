@@ -7,37 +7,37 @@ FactoryGirl.define do
   factory :admin, class: User do 
     first_name             "alexi"
     last_name              "garrow"
-    email                  "alexi@tippingpointpartners.com"
+    email                  "alexi0@apporchard.com"
     password               "please"
     password_confirmation  "please"
     role                   "admin"
-    company
+
   end
   
   factory :company_admin, class: User do
     first_name              "amanda"
     last_name               "connel"
-    email                   "amanda@tippingpointpartners.com"
+    email                   "amanda@apporchard.com"
     password                "please"
     password_confirmation   "please"
     role                    "company_admin"
-    company 
+    
   end
   
   factory :employee, class: User do
     first_name              "khalid"
     last_name               "mills"
-    email                   "khalid@tippingpointpartners.com"
+    email                   "khalid1@apporchard.com"
     password                "please"
     password_confirmation   "please"
     role                    "company_admin"
-    company
+
   end
 
-  factory :company do 
-    name                "tipping point partners"
-    email_extension     "tippingpointpartners.com"
-    print_code          1234567
+  factory :appOrchard, class: Company do 
+    name                "app orchard"
+    email_extension     "apporchard.com"
+    print_code          "1234567"
     blurb               "not your traditional incubator"
     
     factory :company_with_users do
@@ -50,9 +50,12 @@ FactoryGirl.define do
       end
     end
   end
-
-    
-
+  
+  factory :perka, class: Company do
+    name                "perka"
+    email_extension     "perka.com"
+    print_code          "7654321"
+  end
 
 end
 

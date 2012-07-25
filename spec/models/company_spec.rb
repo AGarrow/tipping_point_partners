@@ -15,6 +15,22 @@ describe Company do
   
   it{should be_valid}
   
+  describe "when company is deleted" do 
+    it "employees should also be deleted" do
+      company = Company.find_by_email_extension("apporchard.com")
+      employee1 = FactoryGirl.create(:employee)
+      employee2 = FactoryGirl.create(:company_admin)
+      employee3 = FactoryGirl.create(:admin)
+      company.destroy
+      employee1.should == nil
+      employee2.should == nil
+      employee3.should == nil
+      
+    end
+  end
+  
+  
+  
   describe "when print_code is too long" do
     before {@company.print_code = 12345678}
     it {should_not be_valid}
