@@ -3,17 +3,22 @@ require 'spec_helper'
 describe User do
   
   before do
-        @user = User.new( 
-          first_name:              'will',
-          last_name:               'werblow',
-          email:                   'will@tippingpointpartners.com',
-          password:                'please',
-          password_confirmation:   'please',
-          company_id:              1  
-          )
+              
+        @company = Company.create(
+          name:                     'tipping point partners',
+          email_extension:          'tippingpointpartners.com', 
+          print_code:               '1234567'           
+        )
+
+         @user = User.new( 
+            first_name:              'alexi',
+            last_name:               'garrow',
+            email:                   'alexi@tippingpointpartners.com',
+            password:                'please',
+            password_confirmation:   'please',
+            company_id:              1  
+            )
         
-        
-        @company = FactoryGirl.create(:company)
   end
 
   subject {@user}
@@ -25,11 +30,56 @@ describe User do
   it{should respond_to(:email)}
   it{should respond_to(:first_name)}
   it{should respond_to(:last_name)}
+  it{should respond_to (:avatar)}
 
-  it{ should be_valid}
+  it{should be_valid}
+  
+  
+
   
   
   
+  describe "before user is saved email" do 
+
+    it "should be saved as all lower-case" do
+      mixed_case_email = 'aLeXi@TIPPINGpointPartners.com' 
+      @user.email = mixed_case_email
+      @user.save!
+      @user.email.should == mixed_case_email.downcase
+    end
+    
+    it "should assign user to a company" do
+      FactoryGirl.create(:appOrchard)
+      FactoryGirl.create(:perka)
+      email_extensions = %w[apporchard.com perka.com tippingpointpartners.com]
+      email_extensions.each do |extension|
+        user = @user.dup
+        user.company_id = nil
+        user.email = 'alexi@'<<extension
+        user.save!
+        user.company.email_extension.should == extension
+      end
+    end  
+
+    it "should be assigned a remember token" do
+      @user.save
+      @user.remember_token.should_not == nil
+    end
+  end
+  
+  describe "when user is first created" do
+    it "role should be nil" do
+      user = @user.dup
+      user.email = "unique@tippingpointpartners.com"
+      user.save!
+      user.role.should == nil
+    end
+    
+    it "send_validation should create a validation_token" do
+      @user.send_validation
+      @user.validation_token.should_not == nil
+    end
+  end
   
   describe "return value of authenticate method" do
     before {@user.save }
@@ -51,82 +101,83 @@ describe User do
     
     it "should reject empty passwords" do 
       @user.password = @user.password_confirmation = " "
-      it { should_not be_valid }
+      should_not be_valid
     end
 
     it "should reject passwords that are too short" do
-      before { @user.password = @user.password_confirmation = "a" * 5 }
-      it { should be_invalid }
+      @user.password = @user.password_confirmation = "a" * 5 
+      should be_invalid 
     end
 
     it "should reject passwords that don't match confirmations" do
-      before { @user.password_confirmation = "mismatch" }
-      it { should_not be_valid }
+      @user.password_confirmation = "mismatch" 
+      should_not be_valid 
     end
 
     it "should reject empty confirmations" do
-      before { @user.password_confirmation = nil }
-      it { should_not be_valid }
+      @user.password_confirmation = nil 
+      should_not be_valid 
+    end
+    
+    it "should be skipped when user is updating profile" do
+      @user.save!
+      @user.first_name = "hey"
+      should be_valid
+      @user.last_name = "there"
+      should be_valid
+      
     end
 
   end
   
-
   describe "email validations" do 
     it "should reject existing email addresses" do
-      before do
-        user_with_same_email = @user.dup
-        user_with_same_email.email = @user.email.upcase
-        user_with_same_email.save
-      end
-      it {should_not be_valid}
+      @user.save!
+      user_with_same_email = @user.dup
+      user_with_same_email.email = @user.email.upcase
+      user_with_same_email.save
+      user_with_same_email.should_not be_valid
     end
-
-    describe "email address with mixed case" do 
-      let(:mixed_case_email) {"Foo@ExAmPle.CoM"}
-
-      it "should be saved as all lower-case" do
-        @user.email = mixed_case_email
-        @user.save
-        @user.reload.email.should == mixed_case_email.downcase
+     
+      it "should reject invalid email format" do
+        addresses = %w[aa;lsdkjf hello@example;com jijiji.l @.com alexio2@mac.com]
+        addresses.each do |invalid_address|
+        @user.email = invalid_address
+        @user.should_not be_valid
+        end
       end
+      
+      it "should accept valid format" do
+        addresses = %w[alexi@tippingpointpartners.com dave@tippingpointpartners.com mike@tippingpointpartners.com ]
+        addresses.each do |valid_address|
+          @user.email = valid_address
+          @user.should be_valid
+        end
+      end
+      
+  end
+
+  describe "name validations" do
+    it "should reject empty name" do
+      @user.first_name = ""
+      @user.last_name="a"
+      should_not be_valid
+      @user.first_name ="a"
+      @user.last_name=""
+      should_not be_valid
     end
-
-    describe "should reject invalid email format"
-       it "should be invalid" do
-         addresses = %w[user@foo,com user_at_foo.org example.user@foo. foo@bar_baz.com foo@bar_baz.com]
-         addresses.each do |invalid_address|
-           @user.email = invalid_address
-           @user.should_not be_valid
-         end
-       end
-
-
-     describe "when email format is valid"
-       it "should be valid" do
-       addresses = %w[user@foo.COM A_US-er@f.b.org first.1st@foo.jp a+b@baz.cn ]
-       addresses.each do |valid_address|
-         @user.email = valid_address
-         @user.should be_valid
-       end
-     end
-
+    
+    it "should reject names that are too long" do
+      @user.first_name = "a"*21
+      @user.last_name = "a"*6
+      should_not be_valid
+      @user.first_name = "a"*6
+      @user.last_name = "a"*21
+      should_not be_valid
+    end  
   end
+  
 
-   
-  describe "when name is not present" do
-    before {@user.first_name = " ",@user.last_name="a"}
-    it {should_not be_valid}
-    before {@user.first_name="a",@user.last_name=""}
-    it{should_not be_valid}
-  end
-
-  describe "when name is too long" do 
-    before {@user.first_name= "a"*21}
-    it {should_not be_valid}
-    before {@user.last_name="a"*21}
-    it {should_not be_valid}
-  end
-
+  
  
 end

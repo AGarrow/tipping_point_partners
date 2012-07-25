@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
    
    before_validation do |user|
      if new_record?
+       user.email = email.downcase
        assign_company
      end
    end
@@ -39,7 +40,7 @@ class User < ActiveRecord::Base
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence:   true,
                       format:     { with: VALID_EMAIL_REGEX },
-                      uniqueness: { case_sensitive: false }
+                      uniqueness: { case_sensitive:  false }
     validates :password, presence: true, length: { minimum: 6 }, :if => :should_validate_password?
     validates :password_confirmation, presence: true , :if => :should_validate_password?
     validates :company_id, presence: true
