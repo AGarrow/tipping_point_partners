@@ -1,5 +1,10 @@
 class AnnouncementsController < ApplicationController
   load_and_authorize_resource
+  def index
+    @announcements = Announcement.all
+    render :json => @announcements
+  end
+  
   def create
     @announcement = current_user.company.announcements.build(params[:announcement])
     if @announcement.save
