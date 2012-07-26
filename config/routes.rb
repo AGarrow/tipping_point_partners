@@ -24,7 +24,7 @@ TippingPointPartners::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :companies
   resources :password_resets
-  resources :announcements, only: [:create, :destroy]
+  resources :announcements, only: [:index, :create, :destroy]
   root to: 'pages#home'
   
   match "/home",        to: "pages#home"   
