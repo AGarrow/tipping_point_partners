@@ -6,9 +6,10 @@ class Ability
     #
       user ||= User.new # guest user (not logged in)
         
-        can :access, :pages, [:home]
+         can :access, :pages, [:home]  
        if user.is? "admin"
          can :manage, :all
+         can :access, :all
          cannot :update, :users, :role, :id => user.id
        elsif user.is? "company_admin"   
          can :access, :all   

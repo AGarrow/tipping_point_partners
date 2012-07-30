@@ -6,7 +6,7 @@
 	</div>
 	<div class="span9">
 		<h4><%= announcement.title %></h4>
-		<p><%= announcement.content %></p>
+		<p><%= simple_format(announcement.content) %></p>
 		<p>	<small><%= time_ago_in_words(announcement.created_at) %> ago</small></p>
 	</div>
 	<% else %>
@@ -15,7 +15,7 @@
 	</div>
 	<div class="span9">
 		<h4><%= announcement.title %></h4>
-		<p><%= announcement.content %></p>
+		<p><%= simple_format(announcement.content) %></p>
 		<p>	<small><%= time_ago_in_words(announcement.created_at) %> ago</small></p>
 		</div>
 	<%end %>
