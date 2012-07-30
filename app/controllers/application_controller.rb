@@ -10,10 +10,8 @@ class ApplicationController < ActionController::Base
       access_denied unless admin?
   end
   
-  enable_authorization
-  
-  rescue_from CanCan::Unauthorized do |exception|
-   flash[:error] = "Access denied."
-   redirect_to home_path
+  enable_authorization do |exception|
+    redirect_to home_path, :alert => exception.message
   end
+  
 end
