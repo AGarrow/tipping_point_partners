@@ -4,6 +4,7 @@ class AnnouncementsController < ApplicationController
     
     @announcements = Announcement.all
     respond_to do |format|
+      format.html {redirect_to home_path}
       format.json {render json: @announcements}
     end
   end
