@@ -1,8 +1,11 @@
 class AnnouncementsController < ApplicationController
   load_and_authorize_resource
   def index
+    
     @announcements = Announcement.all
-    render :json => @announcements
+    respond_to do |format|
+      format.json {render json: @announcements}
+    end
   end
   
   def create
