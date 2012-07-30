@@ -22,8 +22,8 @@ class Ability
          can :access, :all
          can :update, :users, :id => user.id
        elsif user.is? nil
-         can :access, :sessions, :new
          can :access, :users, :new
+         can :access, :sessions
          can :create, User
        end
        
