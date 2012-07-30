@@ -9,22 +9,22 @@ class Ability
         can :access, :pages, [:home]
        if user.is? "admin"
          can :manage, :all
-         can :access, :all
          cannot :update, :users, :role, :id => user.id
-       elsif user.is? "company_admin"      
-         can :access, :all
+       elsif user.is? "company_admin"   
+         can :access, :all   
          can :manage, :companies, :id => user.company_id
-         can [:update, :destroy], :users, :company_id => user.company_id
+         can [:update, :destroy], :users, {:company_id => user.company_id, :role => "employee"}
          cannot :update, :users, :role, :id => user.id
          can :create, :announcements
-         can :destroy, :announcements, :company_id => user.company_id
+         can :destroy, :announcements, :company_id => user.company_id   
        elsif user.is? "employee"
-         can :access, :all
          can :update, :users, :id => user.id
+         can :access, :all
        elsif user.is? nil
          can :access, :users, :new
          can :access, :sessions
          can :create, User
+         can :access, :announcements
        end
        
        
