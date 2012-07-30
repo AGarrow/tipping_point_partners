@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   
-  load_and_authorize_resource 
-
-  skip_authorize_resource :only => :validate
+  load_and_authorize_resource :except => :validate
 
   def index
     @users = User.all
