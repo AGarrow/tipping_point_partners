@@ -1,13 +1,13 @@
-<h1>Frequently Asked Questions</h1>
-<div class = "container well">
-
-<% @questions.each do |question| %>
-	<%= render :partial =>'show', :locals => {:question => question} %>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Question', new_question_path if can? :create, :questions%>
-
+<% provide :title,"FAQ's" %>
+<div class = "container">
+	<div class = "row">
+		<h1>Frequently Asked Questions
+		<%= link_to raw('<i class= "icon-plus"></i>'), new_question_path, :class => 'btn btn-success pull-right' if can? :create, :questions%>
+		</h1>
+	</div>
+	<div class = "well">
+		<% @questions.each do |question| %>
+			<%= render :partial =>'show', :locals => {:question => question} %>
+		<% end %>
+	</div>
 </div>

@@ -1,3 +1,10 @@
+
 <h3><%= question.question %></h3>
+<% if can? :access, :questions %>
+<div class='btn-group pull-right'>
+	<%= link_to raw('<i class="icon-remove"></i>'), question_path(question), :confirm => "Are you sure?", :method => :delete, :class=>"btn btn-danger" %>
+	<%= link_to raw('<i class="icon-edit"></i>'), edit_question_path(question), :class=>"btn btn-info" %>
+</div>
+<% end %>
 <p><%= format_text(question.answer) %></p>
 <%= image_tag question.picture if question.picture? %>
