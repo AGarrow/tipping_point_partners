@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include UsersHelper
   include CompaniesHelper
   include LinkedInHelper
+  include AnnouncementsHelper
   
   before_filter do |controller|
     @format = controller.request.format.json?
