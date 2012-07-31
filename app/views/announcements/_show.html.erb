@@ -1,3 +1,4 @@
+
 <% announcement ||= @announcement %>
 <div class = "row-fluid" id="announcement">
 	<% if !announcement.company.avatar_file_name.nil?  %>
@@ -6,7 +7,7 @@
 	</div>
 	<div class="span9">
 		<h4><%= announcement.title %></h4>
-		<p><%= simple_format(announcement.content) %></p>
+		<p><%= format_text(announcement.content) %></p>
 		<p>	<small><%= time_ago_in_words(announcement.created_at) %> ago</small></p>
 	</div>
 	<% else %>
@@ -15,7 +16,7 @@
 	</div>
 	<div class="span9">
 		<h4><%= announcement.title %></h4>
-		<p><%= simple_format(announcement.content) %></p>
+		<p><%= format_text(announcement.content) %></p>
 		<p>	<small><%= time_ago_in_words(announcement.created_at) %> ago</small></p>
 		</div>
 	<%end %>

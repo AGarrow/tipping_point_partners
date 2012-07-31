@@ -20,6 +20,7 @@ gem 'aws-sdk'
   gem 'json'
   gem 'will_paginate', '~>3.0'
   gem 'jquery-rails'
+  gem 'rinku'
   
 group :assets do
 
