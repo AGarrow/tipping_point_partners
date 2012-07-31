@@ -25,7 +25,8 @@ class Ability
          can :access, :users, :new
          can :access, :sessions
          can :create, User
-         can :access, :announcements
+         can :read, :announcements
+         can :read, :companies
        end
        
        

@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
-  load_and_authorize_resource
+load_and_authorize_resource
+
 
   # GET /compani
   # GET /companies.json
@@ -16,7 +17,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
-
+    
   @company = Company.find(params[:id])
   @employees=@company.users
 

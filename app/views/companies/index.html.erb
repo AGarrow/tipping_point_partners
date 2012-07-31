@@ -1,5 +1,5 @@
 <% provide(:title,'Workspace') %>
-<h1>The Workspace</h1>
+<h1>The Workspace<%= @format %></h1>
 
 <div class="row">
 	<div class="tabbable tabs-left">
@@ -9,7 +9,7 @@
 				<li><a href="#tab<%=title_tab_number%>" data-toggle="tab"><%= list_name company %></a></li>
 				<%title_tab_number+=1 %>
 			<% end %>
-			<% if current_user.is? "admin" %>
+			<% if can? :create, :company %>
 		 		<li><a href="#tab<%=title_tab_number+1%>"data-toggle="tab">New Company</a></li>
 			<% end %>
 		</ul>
@@ -22,7 +22,7 @@
 				<% tab_number+=1 %>
 			<% end %>
 
-			<% if current_user.is? "admin"
+			<% if can? :create, :company
 				@company = Company.new%>
 				<div class="tab-pane acive" id="tab<%=tab_number+1%>">
 					<p><%= render :partial =>'form', :object => @company %></p>

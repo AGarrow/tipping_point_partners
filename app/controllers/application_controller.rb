@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   include UsersHelper
   include CompaniesHelper
   include LinkedInHelper
+  
+  before_filter do |controller|
+    @format = controller.request.format.json?
+  end
+ 
  
   def admin_access_required 
       access_denied unless admin?
