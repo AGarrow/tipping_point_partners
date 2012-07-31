@@ -1,15 +1,3 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Question:</b>
-  <%= @question.question %>
-</p>
-
-<p>
-  <b>Answer:</b>
-  <%= @question.answer %>
-</p>
-
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<%= render :partial =>'show', :locals => {:question=> @question} %>
