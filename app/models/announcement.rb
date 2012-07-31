@@ -1,4 +1,5 @@
 class Announcement < ActiveRecord::Base
+  require 'rails_autolink'
   attr_accessible :content, :title
   
   belongs_to :company

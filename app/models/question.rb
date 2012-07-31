@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  attr_accessible :answer, :question
+  attr_accessible :answer, :question,:picture
   validates_presence_of :question, :answer
   validates_uniqueness_of :question
   
