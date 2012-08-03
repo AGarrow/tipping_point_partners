@@ -11,6 +11,7 @@ class Ability
          cannot :update, :users, [:role], :id => user.id
        if user.is? "admin"
          can :access, :all
+         cannot :update, :users, [:role], :id => user.id
        elsif user.is? "company_admin"   
          can :read, :all   
          can :access, :companies, :id => user.company_id
@@ -18,6 +19,8 @@ class Ability
          can :update, :users, [:role], {:company_id => user.company_id, :role => "employee"}
          can :create, :announcements
          can :destroy, :announcements, :company_id => user.company_id  
+         cannot :update, :users, [:role], :id => user.id
+         
        elsif user.is? "employee"
          can :read, :all
        elsif user.is? nil
