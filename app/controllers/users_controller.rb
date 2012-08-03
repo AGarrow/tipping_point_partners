@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   
   load_and_authorize_resource :except => :validate
-
   def index
     @users = User.all
     @first_last = User.all.sort_by(&:first_name)

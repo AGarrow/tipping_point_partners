@@ -6,23 +6,23 @@ class Ability
     #
       user ||= User.new # guest user (not logged in)        
          can :access, :pages, [:home]
-         can :access, :sessions  
+         can :access, :sessions 
+         can :update, :users, :id => user.id 
+         cannot :update, :users, [:role], :id => user.id
        if user.is? "admin"
          can :access, :all
-         cannot :update, :users, :role, :id => user.id
        elsif user.is? "company_admin"   
          can :read, :all   
          can :access, :companies, :id => user.company_id
-         can [:update, :destroy], :users, {:company_id => user.company_id, :role => "employee"}
-         cannot :update, :users, :role, :id => user.id
+         can :destroy, :users, {:company_id => user.company_id, :role => "employee"}
+         can :update, :users, [:role], {:company_id => user.company_id, :role => "employee"}
          can :create, :announcements
          can :destroy, :announcements, :company_id => user.company_id  
        elsif user.is? "employee"
-         can :update, :users, :id => user.id
          can :read, :all
-         cannot :update, :users, :role, :id => user.id
        elsif user.is? nil
          can :create, :users
+         can :validate, :users
        end
        
        

@@ -5,6 +5,5 @@ module CompaniesHelper
     else
       company.name
     end
-    
   end
 end

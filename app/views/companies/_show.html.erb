@@ -6,9 +6,7 @@
 	<div class = "row-fluid">
 
 		<div class="span2 pull-left">
-			<% unless company.avatar_file_name.nil? %>
-				<%= image_tag company.avatar.url(:thumb) %>	
-			<% end %>
+				<%= image_tag company.avatar.url(:thumb) if company.avatar? %>	
 		</div>
 		<div <% if company.avatar? %> class="span8"<% end %>>
 				<h2>
@@ -20,11 +18,7 @@
 				<% end %>
 				</h2>
 		</div>		
-		<div class=" pull-right">
-			<% if can? :manage, company %>
-			<button class="btn"><%= link_to "edit", edit_company_path(company) %></button>
-			<% end %>
-		</div>
+			<%= link_to "edit", edit_company_path(company), :class => 'btn pull-right' if can? :manage, company %>
 	</div>
 		<p><%= company.blurb %></p>
 		
@@ -38,30 +32,20 @@
 						<% end %>
 					</div>
 					<div>
-						<ul class="unstyled">
-													
+						<ul class="unstyled">													
 							<li><%=link_to name(employee), employee %></li>	
-							<li><%=link_to list_email(employee), employee %></li>
-							<% if employee.phone? %>	
-							<li><%=link_to(employee.phone, employee) %></li>
-							<% end %>
+							<li><%=link_to list_email(employee), employee %></li>	
+							<li><%=link_to(employee.phone, employee) if employee.phone?%></li>
 						</ul>
 						
 					</div>
 				</div>
 						
 			<% else %>
-
-
-				  		<tr>
-			
+				  		<tr>			
 						    <td><%= link_to name(employee), employee %></td>
 						    <td><%= link_to employee.email, employee %></td>
-							<td>
-								<% if employee.phone? %>
-								<%= link_to employee.phone, employee %>
-								<% end %>
-							</td>
+							<td><%= link_to employee.phone, employee if employee.phone? %></td>
 							
 							<% if can? :update, employee, :role %>
 							<td><div class="btn btn-info pull-right" data-toggle="modal" href=#<%= employee.id %>EditModal><i class="icon-edit"></i></div></td>
