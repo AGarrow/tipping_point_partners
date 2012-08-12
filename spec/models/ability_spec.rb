@@ -51,7 +51,7 @@ describe User do
     
     context "as employee" do
       let(:user) {FactoryGirl.create(:user, :email => "humble_employee@planetexpress.com", :role => 'employee')}
-      it{should be_able_to(:update, :user)}
+      it{should be_able_to(:update, :users)}
       it{should be_able_to(:read, @all_users)}
       it{should be_able_to(:read, @all_companies)}
       it{should_not be_able_to(:create, Company.new)}
