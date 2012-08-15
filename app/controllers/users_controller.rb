@@ -8,7 +8,9 @@ class UsersController < ApplicationController
     @company_name = User.all.sort_by{|user| [user.company.name, user.last_name]}
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @users }
+      format.json { render :json => {:first_last => @first_last, 
+                                     :last_first => @last_first}}
+       
     end
   end
 
