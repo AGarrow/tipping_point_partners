@@ -10,7 +10,7 @@
 		</div>
 		<div <% if company.avatar? %> class="span8"<% end %>>
 				<h2>
-					<%= link_to company.name, "#{company.website}" %>
+					<%= company.name %>
 				
 				<% if current_user.company == company %>
 				</br>
