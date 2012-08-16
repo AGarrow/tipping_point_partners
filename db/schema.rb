@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731193952) do
+ActiveRecord::Schema.define(:version => 20120815205903) do
 
   create_table "announcements", :force => true do |t|
     t.string   "title"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20120731193952) do
     t.datetime "avatar_updated_at"
     t.text     "blurb"
     t.string   "email_extension"
+    t.string   "website"
   end
 
   add_index "companies", ["email_extension"], :name => "index_companies_on_email_extension"
