@@ -10,12 +10,12 @@ describe User do
       @edisonCO = FactoryGirl.create(:company, :name => 'edison labs')
       @planetCO = FactoryGirl.create(:company, :name => 'planet express')
     
-      @tesla1 = FactoryGirl.create(:user, :email => 'user_1@teslarmotors.com')
-      @tesla2 = FactoryGirl.create(:user, :email => 'user_2@teslarmotors.com')
-      @edison1 = FactoryGirl.create(:user, :email => 'user_1@edisonlabs.com', :company => @edisonCO, :role => 'employee')
-      @edison2 = FactoryGirl.create(:user, :email => 'user_2@edisonlabs.com', :role => 'company_admin')
-      @planet1 = FactoryGirl.create(:user, :email => 'user_1@planetexpress.com')
-      @planet2 = FactoryGirl.create(:user, :email => 'user_2@planetexpress.com')
+      @tesla1 = FactoryGirl.build(:user, :email => 'user_1@teslarmotors.com')
+      @tesla2 = FactoryGirl.build(:user, :email => 'user_2@teslarmotors.com')
+      @edison1 = FactoryGirl.build(:user, :email => 'user_1@edisonlabs.com', :company => @edisonCO, :role => 'employee')
+      @edison2 = FactoryGirl.build(:user, :email => 'user_2@edisonlabs.com', :role => 'company_admin')
+      @planet1 = FactoryGirl.build(:user, :email => 'user_1@planetexpress.com')
+      @planet2 = FactoryGirl.build(:user, :email => 'user_2@planetexpress.com')
       
       @all_users = [@tesla1, @tesla2, @edison1, @edison2, @planet1, @planet2]
       @all_companies = [@teslaCo, @edisonCO, @planetCO]
@@ -30,7 +30,7 @@ describe User do
       it {should be_able_to(:access, @all_users )}
       it {should be_able_to(:access, Question.new)}
       it {should be_able_to(:access, Announcement.new)}
-#     it {should_not be_able_to(:update, :user,[:role])}
+      it {should be_able_to(:update, self)}
     end
     
     context "as company_admin" do
@@ -43,7 +43,7 @@ describe User do
       it {should_not be_able_to(:destroy, @edison2)}
 #        it {should_not be_able_to(:update, @edison2, :role)} 
       it {should be_able_to(:create, @edisonCO.announcements.create(title: 'herpa', content: 'derp'))}
-      it {should be_able_to(:destroy, @edisonCO.announcements.first)}
+      it {should be_able_to(:destroy, @edisonCO.announcements.create(title: 'derpy', content: 'herps'))}
 #        it {should_not be_able_to(:update, :user,:role)}
       it {should_not be_able_to(:access, Question.new)}
     
