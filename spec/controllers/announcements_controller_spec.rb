@@ -1,5 +1,4 @@
 require 'spec_helper'
-include UsersHelper
 
 describe AnnouncementsController do
   render_views
@@ -19,8 +18,13 @@ describe AnnouncementsController do
   describe "POST 'create'" do
     before do
       @teslaCO = FactoryGirl.create(:company, :name => 'teslar motors')
-      @user = FactoryGirl.create(:user, :email => 'announcement_creator@teslarmotors.com', :role => 'admin')
-      sign_in(@user)
+      @user = User.create(:first_name => 'alexi', 
+        :last_name => 'garrow', 
+        :email => 'alexioaaaa@teslarmotors.com', 
+        :password => '1234567', 
+        :password_confirmation => '1234567',
+        :role => 'admin')
+      
     end
 
     describe "failure" do
@@ -28,7 +32,7 @@ describe AnnouncementsController do
         @attr = {:title => "hello world", :content => ""}
       end
 
-      it "should not create a micropost" do
+      it "should not create an announcement" do
         lambda do
           post :create, :announcement => @attr
         end.should_not change(Announcement, :count)
@@ -37,12 +41,18 @@ describe AnnouncementsController do
 
     describe "success" do 
       before do
-        sign_in(@user) 
+        @attr = {:title => "hello world", :content => "can you see me?"}
+        test_sign_in @user 
       end
-
+      it "should be an admin" do 
+        @user.is?('admin').should == true
+      end
+      it "should belong to a company" do 
+        @user.company.should_not == nil
+      end
       it "should create an announcement" do
         lambda do
-          post :create, @teslaCO.announcements.new(@attr)
+          post :create, :announcement => @attr
         end.should change(Announcement, :count).by(1)
       end
     end
