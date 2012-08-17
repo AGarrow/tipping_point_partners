@@ -36,8 +36,8 @@ describe AnnouncementsController do
     end
 
     describe "success" do 
-      before do 
-        @attr = {:title => "hello world", :content => "can you hear me?"}
+      before do
+        sign_in(@user) 
       end
 
       it "should create an announcement" do
