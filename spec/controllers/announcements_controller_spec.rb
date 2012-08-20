@@ -1,31 +1,28 @@
 require 'spec_helper'
-
+include SessionsHelper
 describe AnnouncementsController do
   render_views
 
+
   describe "access control" do
     it "should deny access to 'create'" do
-      post :create
-      response.should redirect_to(home_path)
+      lambda do
+        post :create
+      end.should_not change(Announcement, :count)
     end
 
     it "should deny access to 'delete'" do
-      delete :destroy, :id => 1
-      response.should redirect_to(home_path)
+      lambda do
+        delete :destroy, :id => 1
+      end.should_not change(Announcement, :count)
     end
   end
 
+
   describe "POST 'create'" do
-    before do
-      @teslaCO = FactoryGirl.create(:company, :name => 'teslar motors')
-      @user = User.create(:first_name => 'alexi', 
-        :last_name => 'garrow', 
-        :email => 'alexioaaaa@teslarmotors.com', 
-        :password => '1234567', 
-        :password_confirmation => '1234567',
-        :role => 'admin')
-      
-    end
+    @teslaCO = FactoryGirl.create(:company, :name => 'teslar motors')
+    let(:user) {FactoryGirl.create(:user, :email => 'alexi_garrow@teslarmotors.com', :role => 'admin')}
+
 
     describe "failure" do
       before do
@@ -42,44 +39,37 @@ describe AnnouncementsController do
     describe "success" do 
       before do
         @attr = {:title => "hello world", :content => "can you see me?"}
-        test_sign_in @user 
+        sign_in user 
+        post :create, :announcement => @attr
       end
-      it "should be an admin" do 
-        @user.is?('admin').should == true
-      end
-      it "should belong to a company" do 
-        @user.company.should_not == nil
-      end
+
       it "should create an announcement" do
         lambda do
           post :create, :announcement => @attr
         end.should change(Announcement, :count).by(1)
       end
+      
+      it "should delete an announcement" do
+        post :create, :announcement => @attr
+        lambda do 
+          delete :destroy, :id => 1
+        end.should change(Announcement, :count).by(-1)
+      end
+      describe "properties" do
+        let(:announcement) {Announcement.first}
+
+        it "should belong to the right company" do
+          announcement.company.name.should == 'teslar motors'
+        end
+
+        it "should save title" do
+          announcement.title.should == "hello world"
+        end
+
+        it "should save content" do
+          announcement.content.should == "can you see me?"
+        end
+      end
     end
   end
-
-
-
-
-
-
-
-
-
-
-
-  describe "GET 'create'" do
-    it "returns http success" do
-      get 'create'
-      response.should be_success
-    end
-  end
-
-  describe "GET 'destroy'" do
-    it "returns http success" do
-      get 'destroy'
-      response.should be_success
-    end
-  end
-
 end
