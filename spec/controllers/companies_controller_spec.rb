@@ -34,8 +34,8 @@ describe CompaniesController do
   # update the return value of this method accordingly.
   def valid_attributes 
     {
-     :name => 'tipping point partners',
-     :email_extension => 'tippingpointpartners.com',
+     :name => 'milky way morons',
+     :email_extension => 'milkywaymorons.com',
      :print_code => 1234567
      }
   end

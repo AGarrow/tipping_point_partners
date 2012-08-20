@@ -36,6 +36,7 @@ TippingPointPartners::Application.configure do
   config.assets.debug = true
   
   #Reset password mailer
+  config.action_mailer.delivery_method = :test
   config.action_mailer.default_url_options = { :host => "localhost:3000"}
   
   #ImageMagick location for paperclip

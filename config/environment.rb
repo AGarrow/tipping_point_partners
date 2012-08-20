@@ -9,7 +9,6 @@ require 'yaml'
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-TippingPointPartners::Application.initialize!
 
 #configure cancan for authorization
 #config.gem "cancan"
@@ -24,3 +23,5 @@ ActionMailer::Base.smtp_settings = {
 :enable_starttls_auto => true
 }
 ActionMailer::Base.delivery_method = :smtp
+
+TippingPointPartners::Application.initialize!
