@@ -8,7 +8,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
 require 'capybara/rails'
-
+require 'paperclip/matchers'
 
 
 
@@ -40,9 +40,7 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 
-  def test_sign_in (user)
-    current_user = user
-    @current_user = user
-  end
+  config.include Paperclip::Shoulda::Matchers
+
 
 end

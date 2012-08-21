@@ -13,18 +13,4 @@ let(:user) {FactoryGirl.create(:user, :email => 'fred_astaire@lonely.com')}
     end
   end
 
-  describe "sign in" do
-    it "should accept valid passwords" do
-      post :create, {:password => '1234567'}
-      response.should redirect_to home_path
-    end
-  end
-
-  describe "GET 'destroy'" do
-    it "returns http success" do
-      get 'destroy'
-      response.should be_success
-    end
-  end
-
 end

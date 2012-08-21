@@ -20,8 +20,8 @@ describe AnnouncementsController do
 
 
   describe "POST 'create'" do
-    @teslaCO = FactoryGirl.create(:company, :name => 'teslar motors')
-    let(:user) {FactoryGirl.create(:user, :email => 'alexi_garrow@teslarmotors.com', :role => 'admin')}
+    @teslaCO = FactoryGirl.create(:company, :name => 'tesla motors')
+    let(:user) {FactoryGirl.create(:user, :email => 'alexi_garrow@teslamotors.com', :role => 'admin')}
 
 
     describe "failure" do
@@ -59,7 +59,7 @@ describe AnnouncementsController do
         let(:announcement) {Announcement.first}
 
         it "should belong to the right company" do
-          announcement.company.name.should == 'teslar motors'
+          announcement.company.name.should == 'tesla motors'
         end
 
         it "should save title" do

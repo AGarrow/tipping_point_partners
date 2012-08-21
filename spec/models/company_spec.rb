@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Company do
   before do
-     @company = Company.new(name: "tipping point partners",email_extension: "tippingpointpartners.com", print_code: 1234567)
+     @company = Company.new(name: "tipping point",email_extension: "tippingpoint.com", print_code:'1234567')
   end
   
   subject {@company}
