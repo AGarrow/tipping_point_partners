@@ -15,9 +15,11 @@ class AnnouncementsController < ApplicationController
   end
   
   def create
+    @recipients = Array.new
     @announcement = current_user.company.announcements.build(params[:announcement])
     if @announcement.save
       flash[:success] = "announcement made!"
+      @announcement.send_to_recipient(@recipients)
     end
     redirect_to home_path
   end
