@@ -1,0 +1,31 @@
+<div class="modal hide" id="announcementModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Make an announcement!</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for(@make_announcement) do |f| %>
+
+	<%= f.label :title  %>
+	<%= f.text_field :title %>
+	<%= f.label :content %>
+	<%= f.text_area :content, :rows => "4", :cols => "" %>
+  <%= f.label "make this announcement public?" %>
+  <%= f.radio_button :public, true, :checked => true%>
+  <%= f.radio_button :public, false %>
+
+  <% @companies.each do |company| %>
+    <%= f.label company.name %>
+    <%= check_box_tag @recipients.insert(company) %>
+ 
+  <% end %>  
+
+
+
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+	<%= f.submit :class => "btn btn-primary" %>
+	<% end %>
+  </div>
+</div>

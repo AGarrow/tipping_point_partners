@@ -1,0 +1,47 @@
+	<div class="row well">
+		<h2>
+			Announcements
+			<% if can? :create, :announcements %>
+			<div class = "pull-right">
+				<a class="btn btn-success" data-toggle="modal" href="#announcementModal" ><i class = "icon-plus"></i></a>
+				</div>
+				<%end %>
+			</h2>
+
+		<%  @announcements.each do |announcement| %>
+			<%= render :partial =>'announcements/show', :locals => {:announcement => announcement} %>
+		<% end %>
+		
+
+			<ul class="pager">
+			<%= will_paginate @announcements, :page_links => false %>
+			</ul>
+
+
+		
+		
+	</div>
+<div class="modal hide" id="announcementModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Make an announcement!</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for(@make_announcement) do |f| %>
+
+	<%= f.label :title  %>
+	<%= f.text_field :title %>
+	<%= f.label :content %>
+	<%= f.text_area :content, :rows => "4", :cols => "" %>
+
+
+
+
+
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+	<%= f.submit :class => "btn btn-primary" %>
+	<% end %>
+  </div>
+</div>

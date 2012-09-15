@@ -2,9 +2,11 @@ class AnnouncementsController < ApplicationController
   load_and_authorize_resource
   def index
     
-    @announcements = Announcement.all
+  @announcements = Announcement.paginate(:page => params[:page])
+  @make_announcement = Announcement.new
+
     respond_to do |format|
-      format.html {redirect_to home_path}
+      format.html
       format.json {render :json => @announcements.to_json(
         :include => {
           :company => {
