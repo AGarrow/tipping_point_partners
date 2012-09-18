@@ -3,25 +3,28 @@
     <button type="button" class="close" data-dismiss="modal">×</button>
     <h3>Make an announcement!</h3>
   </div>
-  <div class="modal-body">
+  <div class="modal-body row-fluid">
+    <div class = "span6 pull-left"> 
     <%= form_for(@make_announcement) do |f| %>
+    	<%= f.label :title  %>
+    	<%= f.text_field :title %>
+    	<%= f.label :content %>
+    	<%= f.text_area :content, :rows => "4", :cols => "" %>
+      </div>
+      <div class = " pull-left">
+        <div class = "btn-group">
+          <button type = "button", class = "btn"><%= f.radio_button :public, "true", {:value => "public",:checked => true, :class => "btn"}%></button>
+          <button type = "button", class = "btn"><%= f.radio_button :public, false %></button>
 
-	<%= f.label :title  %>
-	<%= f.text_field :title %>
-	<%= f.label :content %>
-	<%= f.text_area :content, :rows => "4", :cols => "" %>
-  <%= f.label "make this announcement public?" %>
-  <%= f.radio_button :public, true, :checked => true%>
-  <%= f.radio_button :public, false %>
-  
-  <%= f.fields_for :recipients do |n| %>
-    <% @companies.each do |company| %>
-      <%= f.label company.name %>
-      <%= n.check_box company.id %>
-   
-    <% end %>  
-   <%end%> 
-
+        </div>
+        <%= f.fields_for :recipients, @make_announcement.recipients do |n| %>
+          <% @companies.each do |company| %>
+            <%= f.label company.name %>
+            <%= n.check_box company.id, {} %>
+         
+          <% end %>  
+       <%end%> 
+       </div>
 
 
   </div>

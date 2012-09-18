@@ -2,7 +2,7 @@ class Announcement < ActiveRecord::Base
   require 'rails_autolink'
   attr_accessible :content, :title, :public, :recipients
   attr_accessor :recipients
-    serialize :recipients, Hash
+  serialize :recipients, Hash
   
   
 
@@ -11,9 +11,6 @@ class Announcement < ActiveRecord::Base
   default_scope order: 'announcements.created_at DESC'
   self.per_page = 25
 
-  before_save do |announcement|
-  #  announcement.recipients.to_hash
-  end
 
 
   def send_to_recipient 

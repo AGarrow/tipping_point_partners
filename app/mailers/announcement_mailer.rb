@@ -6,16 +6,18 @@ class AnnouncementMailer < ActionMailer::Base
    	@announcement = announcement
   	recipients = Array.new
 
-  	announcement.recipients.each do |element|
-  		@companies.insert(Company.find(element[1]))
+  	announcement.recipients.keys.each do |element|
+  		@companies << Company.find(element)
   	end
 
   	@companies.each do |company|
-  		recipients.insert(company.users.all)
+  		company.users.each do |user|
+  			recipients << user.email
+  		end
   	end
   	
 
-  	mail :to => recipients.collect(&:email).join(","),
+  	mail :to => recipients.join(","),
   	:subject => "#{@announcement.title}"			
   end
 end
