@@ -12,8 +12,6 @@ require 'will_paginate/array'
     @companies.delete @myCompany 
     @make_announcement = Announcement.new(params[:announcement])
     @announcements = Announcement.paginate(:page => params[:page])
-   
-    render :controller => "AnnouncementsController", :action => 'create'
   end
 
   def me

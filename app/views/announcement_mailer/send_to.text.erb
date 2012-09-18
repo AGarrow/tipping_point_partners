@@ -1,1 +1,5 @@
+<% @companies.each do |company| %>
+<%= company.to_s %>
+<% end %>
 <%= @announcement.content.to_s %>
+<%= @announcement.recipients.to_s %>

@@ -13,12 +13,14 @@
   <%= f.label "make this announcement public?" %>
   <%= f.radio_button :public, true, :checked => true%>
   <%= f.radio_button :public, false %>
-
-  <% @companies.each do |company| %>
-    <%= f.label company.name %>
-    <%= check_box_tag @recipients.insert(company) %>
- 
-  <% end %>  
+  
+  <%= f.fields_for :recipients do |n| %>
+    <% @companies.each do |company| %>
+      <%= f.label company.name %>
+      <%= n.check_box company.id %>
+   
+    <% end %>  
+   <%end%> 
 
 
 
