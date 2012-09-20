@@ -5,25 +5,30 @@
   </div>
   <div class="modal-body row-fluid">
     <div class = "span6 pull-left"> 
-    <%= form_for(@make_announcement) do |f| %>
+    <%= form_for @make_announcement do |f| %>
     	<%= f.label :title  %>
     	<%= f.text_field :title %>
     	<%= f.label :content %>
     	<%= f.text_area :content, :rows => "4", :cols => "" %>
       </div>
-      <div class = " pull-left">
-        <div class = "btn-group">
-          <button type = "button", class = "btn"><%= f.radio_button :public, "true", {:value => "public",:checked => true, :class => "btn"}%></button>
-          <button type = "button", class = "btn"><%= f.radio_button :public, false %></button>
-
-        </div>
-        <%= f.fields_for :recipients, @make_announcement.recipients do |n| %>
+      <div class = " pull-left" >
+        <div class = "btn-group form-inline" >
+          <%= f.radio_button :public, true,{:checked => true}%>
+          <%= label :public, "public"%>
+          <%= f.radio_button :public, false, {} %>
+          <%= label :public, "private"%>
+        
+        <h4>Mail to:</h4>
+        <ul class = "pull-left">
+          <%= f.fields_for :recipients, @make_announcement.recipients do |n| %>
           <% @companies.each do |company| %>
-            <%= f.label company.name %>
-            <%= n.check_box company.id, {} %>
-         
+          <li>
+            <%= n.check_box company.id, {} %><%= n.label company.name %>
+          </li>
           <% end %>  
-       <%end%> 
+        </ul>
+       <%end%>
+       </div> 
        </div>
 
 
