@@ -1,10 +1,7 @@
 class AnnouncementsController < ApplicationController
   load_and_authorize_resource
   def index
-    
-  @announcements = Announcement.paginate(:page => params[:page])
-  @make_announcement = Announcement.new
-
+    @announcements = Announcement.all.where(:public => true)
     respond_to do |format|
       format.html
       format.json {render :json => @announcements.to_json(
@@ -20,6 +17,7 @@ class AnnouncementsController < ApplicationController
     @announcement = current_user.company.announcements.build(params[:announcement])
     if @announcement.save
       flash[:success] = "announcement made!"
+      @announcement.send_to_recipient
     end
     redirect_to home_path
   end

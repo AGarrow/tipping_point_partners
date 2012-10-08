@@ -2,15 +2,16 @@ class PagesController < ApplicationController
 require 'will_paginate/array'
   def home
     @user=current_user
-    @make_announcement = Announcement.new
-    @announcements = Announcement.paginate(:page => params[:page])
     if signed_in?
       @myCompany = Company.find(@user.company_id)    
     else
       redirect_to signin_path    
     end
-      @companies = Company.all 
-      @companies.delete @myCompany 
+
+    @companies = Company.all.sort_by(&:name) 
+    @companies.delete @myCompany 
+    @make_announcement = Announcement.new(params[:announcement])
+    @announcements = Announcement.where(:public => true).paginate(:page => params[:page])
   end
 
   def me
