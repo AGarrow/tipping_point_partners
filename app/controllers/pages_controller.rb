@@ -8,10 +8,10 @@ require 'will_paginate/array'
       redirect_to signin_path    
     end
 
-    @companies = Company.all 
+    @companies = Company.all.sort_by(&:name) 
     @companies.delete @myCompany 
     @make_announcement = Announcement.new(params[:announcement])
-    @announcements = Announcement.paginate(:page => params[:page])
+    @announcements = Announcement.where(:public => true).paginate(:page => params[:page])
   end
 
   def me

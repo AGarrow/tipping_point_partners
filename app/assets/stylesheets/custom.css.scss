@@ -24,6 +24,17 @@ height: 220px}
 position: relative;
 }
 
+.span6#announcement_options{
+  margin-left: 0px;
+  margin-top: 0px;
+}
+.span6#announcement_content{
+  margin-right: 0px;
+}
+
+public-announcement{
+  margin-top: 0px;
+}
 #display_photo_edit_button{
 position: absolute;
 top: 5px;
@@ -35,6 +46,7 @@ right: 20px
 $grayMediumLight: #eaeaea;
 
 /* universal */
+
 
 html {
   overflow-y: scroll;
@@ -49,6 +61,7 @@ section {
 }
 ul {
   list-style: none;
+  margin-left: 0px;
 }
 
 textarea {

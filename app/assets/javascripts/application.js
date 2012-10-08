@@ -14,11 +14,50 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
-jQuery(function() {
-	
+// make private/public button toggle update hidden field
+jQuery(function() {	
 	$('.carousel').carousel({
 	  interval: 4000
-	});
+	});	
+
 	
 });
 
+
+$(function () {
+    $('.checkall').click(function () {
+        $(this).parents('ul').find(':checkbox').attr('checked', this.checked);
+    });
+});
+
+jQuery(function($) {
+  $('div.btn-group[data-toggle-name=*]').each(function(){
+    var group   = $(this);
+    var form    = group.parents('form').eq(0);
+    var name    = group.attr('data-toggle-name');
+    var hidden  = group.children('.hidden');
+    $('button', group).each(function(){
+      var button = $(this);
+      button.live('click', function(){
+          hidden.val($(this).val());
+      });
+      if(button.val() == hidden.val()) {
+        button.addClass('active');
+      }
+    });
+  });
+});
+
+
+
+
+
+$('#public-announcement').on('click', function(event){
+  event.preventDefault();
+  var input = $(this).children().find('.hidden');
+  if(input.length>0){
+    if(input.val().toString() !== $(this).data('value').toString()){
+      input.val($(this).data('value')).trigger('change');
+    }
+  }
+});

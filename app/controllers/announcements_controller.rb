@@ -2,7 +2,7 @@ class AnnouncementsController < ApplicationController
   load_and_authorize_resource
   def index
     
-    @announcements = Announcement.all
+    @announcements = Announcement.all.where(:public => true)
     respond_to do |format|
       format.html {redirect_to home_path}
       format.json {render :json => @announcements.to_json(

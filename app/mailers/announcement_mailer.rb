@@ -6,9 +6,13 @@ class AnnouncementMailer < ActionMailer::Base
    	@announcement = announcement
   	recipients = Array.new
 
-  	announcement.recipients.keys.each do |element|
-  		@companies << Company.find(element)
-  	end
+#recipients is stored as a hash, with the value being 1
+# if the key(company_id) is to be mailed to
+  	announcement.recipients.each do |key,value|
+      if value ==1
+        @companies << Company.find(key)
+      end
+    end
 
   	@companies.each do |company|
   		company.users.each do |user|

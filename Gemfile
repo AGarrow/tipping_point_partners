@@ -9,6 +9,7 @@ gem "linkedin","0.3.7"
 gem "paperclip","3.0.4"
 gem 'aws-s3'
 gem 'aws-sdk'
+gem 'simple_form'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
