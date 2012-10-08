@@ -12,16 +12,18 @@
       <div class = "span6 pull-right" id = "announcement_options" >     
         <%= f.input :public, :as => :radio_buttons, :item_wrapper_class => 'inline', checked: true, :label => "display on announcements page?" %>
         <h4>Mail to:</h4>
-        <ul >
-          <%= f.fields_for :recipients do |n| %>
-          <div><input type="checkbox" class="checkall"> Workspace</div>
-          <% @companies.each do |company| %>
-          <li>
-            <%= n.check_box company.id, {} %><%=" "<<company.name %>
-          </li>
-          <% end %>  
-        </ul>
-       <%end%>
+        <div id ="recipients" style ="overflow: scroll; height: 258px;">
+          <ul >
+            <%= f.fields_for :recipients do |n| %>
+            <div><input type="checkbox" class="checkall"> Workspace</div>
+            <% @companies.each do |company| %>
+            <li>
+              <%= n.check_box company.id, {} %><%=" "<<company.name %>
+            </li>
+            <% end %>  
+          </ul>
+         <%end%>
+       </div>
        </div>
      </div>
   <div class="modal-footer">
