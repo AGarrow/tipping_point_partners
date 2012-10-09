@@ -14,7 +14,7 @@
   end
   
   def create
-    @announcement = current_user.company.announcements.build(params[:announcement])
+    @make_announcement = current_user.company.announcements.build(params[:announcement])
     if @announcement.save
       flash[:success] = "announcement made!"
       @announcement.send_to_recipient
