@@ -1,7 +1,7 @@
-class AnnouncementsController < ApplicationController
+  class AnnouncementsController < ApplicationController
   load_and_authorize_resource
   def index
-    @announcements = Announcement.all.where(:public => true)
+    @announcements = Announcement.where(:public => true).paginate(:page => params[:page])
     respond_to do |format|
       format.html
       format.json {render :json => @announcements.to_json(
