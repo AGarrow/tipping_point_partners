@@ -14,10 +14,10 @@
   end
   
   def create
-    @make_announcement = current_user.company.announcements.build(params[:announcement])
-    if @make_announcement.save
+    @announcement = current_user.company.announcements.build(params[:announcement])
+    if @announcement.save
       flash[:success] = "announcement made!"
-      @make_announcement.send_to_recipient
+      @announcement.send_to_recipient
     end
     redirect_to home_path
   end

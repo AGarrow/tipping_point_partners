@@ -5,7 +5,7 @@
   </div>
   <div class="modal-body row-fluid">
     <div class = "span6 pull-left" id = "announcement_content"> 
-    <%= simple_form_for @make_announcement do |f| %>
+    <%= simple_form_for @announcement do |f| %>
     	<%= f.text_field :title, :placeholder => 'Title' %>
     	<%= f.text_area :content, :rows => "14", :cols => "", :placeholder => 'Content' %>
       </div>

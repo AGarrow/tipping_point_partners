@@ -10,7 +10,7 @@ require 'will_paginate/array'
 
     @companies = Company.all.sort_by(&:name) 
     @companies.delete @myCompany 
-    @make_announcement = Announcement.new(params[:announcement])
+    @announcement = Announcement.new(params[:announcement])
     @announcements = Announcement.where(:public => true).paginate(:page => params[:page])
   end
 
