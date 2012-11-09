@@ -13,12 +13,16 @@
 					<%= company.name %>
 				
 				<% if current_user.company == company %>
-				</br>
-				<small>print code: <%= company.print_code %></small>
+					</br>
+					<small>print code: <%= company.print_code %></small>
 				<% end %>
 				</h2>
-		</div>		
-			<%= link_to "edit", edit_company_path(company), :class => 'btn pull-right' if can? :manage, company %>
+		</div>	
+			<% if can? :manage, company %>	
+								<%= link_to "edit", edit_company_path(company), :class => 'btn pull-right'  %>
+								<div class="btn btn-success pull-right" data-toggle="modal" href="#<%=company.id%>addUserModal"><i class = "icon-plus"></i></div>
+
+			<% end %>
 	</div>
 		<p><%= company.blurb %></p>
 		
@@ -77,6 +81,6 @@
 
 </table>
 </div>
-
+<%= render :partial => 'users/add', :locals => {:company => company} if can? :manage, company %>
 
 

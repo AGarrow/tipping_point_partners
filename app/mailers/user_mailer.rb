@@ -15,4 +15,10 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail :to => user.email, :subject => "Password Reset"  
   end
+
+  def claim_account(user, password)
+    @user = user
+    @password = password
+    mail :to => user.email, :subject => "account created"
+  end
 end

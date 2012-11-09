@@ -6,8 +6,8 @@ load_and_authorize_resource
   # GET /companies.json
     
   def index
+    @new_user = User.new(params[:user])
     @companies = Company.all.sort_by(&:name)
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @companies }
@@ -20,7 +20,6 @@ load_and_authorize_resource
     
   @company = Company.find(params[:id])
   @employees=@company.users
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @company }

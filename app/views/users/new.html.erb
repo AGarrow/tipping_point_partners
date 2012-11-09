@@ -1,9 +1,12 @@
 <% provide(:title,'New User') %>
 <h1>New User</h1>
+
 <row>
 <div class="span4 well welcome">
-
 	<%= form_for @user do |u| %>
+
+	<%= render :partial => "shared/form_errors", :locals =>{:object => @user} %> 
+
 	<%= u.label :first_name %>
 	<%= u.text_field :first_name %>
 
@@ -12,13 +15,11 @@
 
 	<%= u.label :email, "Email (must be your company email address)" %>
 	<%= u.text_field :email %>
-
-	<%= u.label :password, "Password (6 characters or more)" %>
+	<%= u.label :password, "Password (6 characters or more)"%>
 	<%= u.password_field :password %>
 
 	<%= u.label :password_confirmation %>
 	<%= u.password_field :password_confirmation %>
-
 
 	<%= u.label :avatar, "picture" %>
 	<%= u.file_field :avatar %>

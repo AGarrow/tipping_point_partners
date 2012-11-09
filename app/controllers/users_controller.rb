@@ -50,7 +50,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     
-    if @user.save
+    if @user.save && @user.admin_added?
+      redirect_to companies_path
+    elsif @user.save 
       sign_in(@user)    
       respond_to do |format|
         format.html { redirect_to @user }    

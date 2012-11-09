@@ -1,0 +1,23 @@
+<div class="row well">
+		<h2>
+			Announcements
+			<% if can? :create, :announcements %>
+			<div class = "pull-right">
+				<a class="btn btn-success" data-toggle="modal" href="#announcementModal" ><i class = "icon-plus"></i></a>
+				</div>
+				<%end %>
+			</h2>
+
+		<%  @announcements.each do |announcement| %>
+			<%= render :partial =>'announcements/show', :locals => {:announcement => announcement} %>
+		<% end %>
+		
+
+			<ul class="pager">
+			<%= will_paginate @announcements, :page_links => false %>
+			</ul>
+
+
+		
+		
+	</div>

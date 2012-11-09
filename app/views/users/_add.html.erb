@@ -1,0 +1,35 @@
+<div class = "modal hide" id="<%=company.id%>addUserModal">
+	<div class = "modal-header">	
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3> Add User </h3>
+		<h4> <%=company.name%> </h4>
+	</div>
+	<div class = "modal-body row-fluid">
+		<div class="span6 well welcome">
+
+			<%= form_for @new_user do |u| %>
+
+				<%= render :partial => "shared/form_errors", :locals =>{:object => @new_user} %> 
+
+				<%= u.hidden_field :company_id, :value => company.id %>
+
+				<%= u.label :first_name %>
+				<%= u.text_field :first_name %>
+
+				<%= u.label :last_name %>
+				<%= u.text_field :last_name %>
+
+				<%= u.label :email %>
+				<%= u.text_field :email %>
+
+				<%= u.label :avatar, "picture" %>
+				<%= u.file_field :avatar %>
+
+				<%= submit_tag "Add", :name => 'user[admin_added]', class: "btn btn-large btn-primary" %>
+			<% end %>
+		</div>
+		<div>
+			Once created, etc etc...
+		</div>
+	</div>
+</div>

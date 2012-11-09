@@ -1,0 +1,10 @@
+Hello <%= @user.first_name %>!
+It appears that an administrator has created an account for you on Tipping Point Partners' workspace website. 
+
+Your account information is as follows:
+
+email: <%= @user.email %>
+password: <%= @password %>
+
+to activate your account, please click the link below.
+<%= validate_url(:token => @user.validation_token) %>
