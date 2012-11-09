@@ -21,7 +21,8 @@ class Ability
          can :create, :announcements
          can :destroy, :announcements, :company_id => user.company_id  
          cannot :update, :users, [:role], :id => user.id
-         
+         can :create, :users, :company_id => user.company_id
+
        elsif user.is? "employee"
          can :read, :all
        elsif user.is? nil
