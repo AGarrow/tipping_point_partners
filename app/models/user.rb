@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 
    before_create do |user|
      generate_token(:remember_token)
-     send_validation     
+     send_validation unless admin_added?    
    end 
    
    before_save do |user| 
