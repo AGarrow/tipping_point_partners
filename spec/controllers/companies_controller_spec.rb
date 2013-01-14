@@ -49,7 +49,6 @@ describe CompaniesController do
     end
 
     it "should respond to get request" do
-     sign_in user
       get :show, {:id => 1}
       response.should be_success
     end

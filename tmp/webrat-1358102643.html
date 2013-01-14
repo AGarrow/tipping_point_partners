@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TPP | Home</title>
+  <link href="/assets/application.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/assets/custom.css" media="all" rel="stylesheet" type="text/css" />
+	
+  <script src="/assets/application.js" type="text/javascript"></script>
+  
+</head>
+<body>
+<header class="navbar navbar-fixed-top">
+
+	<div class="navbar-inner">
+		<div class="container">
+			<nav>
+				<ul class="nav pull-left">
+					<li><a href="/home">Tipping Point Partners</a></li>
+				</ul>
+				<ul class="nav pull-right">
+					<li><a href="/questions">FAQs</a></li>
+					<li><a href="/announcements">Announcements</a></li>					
+					<li><a href="/users">Directory</a></li>		
+					<li><a href="/companies">Workspace</a></li>
+
+					<li id="fat-menu" class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							Me <b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="/users/2">Profile</a></li>
+							<li><a href="/my_company">My Company</a></li>
+							<li class="divider"></li>
+							<li>
+							<a href="/signout" data-method="delete" rel="nofollow">Sign out</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				
+				
+			</nav>
+		</div>
+	</div>
+</header>
+<div class="container">
+
+	<div class = "modal" id = "welcomeModal">
+		<div class = "modal-header">
+
+			<h3>Activate Account</h3>
+		</div>
+		<div class = "modal-body">
+			<p> An email has been sent to the address you provided. Please check your inbox for an email to activate your account.</p>
+		</div>
+	</div>
+<h1>Welcome Pops!</h1>
+
+<div class="container">
+	<div class="row">
+
+		<div id="companiesCarousel" class="carousel slide span6">
+			<!-- Carousel Items-->
+
+			<div class="carousel-inner">		
+					<div class="active item">
+							<div class="hero-unit"><h2>shakeshack</h2></div>
+								
+
+					</div>
+			</div>
+			<!-- Carousel nav-->
+			<!--a class="carousel-control left" href="#companiesCarousel" data-slide="prev">&lsaquo;</a>
+			<a class="carousel-control right" href="#companiesCarousel" data-slide="next">&rsaquo;</a -->
+		</div>
+		<div class="span6">
+			<p>
+					Truth. Inspiration. Distillation. Execution. We are experienced entrepreneurs who work on projects where technology can address societal or industry needs, solve meaty problems, or satisfy deep cravings. Or just for fun. We work as a team to design, build and operate companies as co-founder or outsourced incubator. We also provide a la carte advice and interim management in strategy, planning, finance, product management and business development.
+		<br></br>
+			Tipping Point is not a typical venture firm or incubator. Instead, we craft partnerships with entrepreneurs specific to their needs and resources. In that sense, you can think of us more as as institutional co-founder rather than an investor or service provider.
+		<br></br>
+			To that end, we look to partner with driven and experienced entrepreneurs creating innovative products and significant value.
+
+				</p>
+		</div>
+	</div>
+	<div class="row well">
+		<h2>
+			Announcements
+			</h2>
+
+		
+
+			<ul class="pager">
+			
+			</ul>
+
+
+		
+		
+	</div>
+
+</div>
+
+
+<div class="modal hide" id="announcementModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Make an announcement!</h3>
+  </div>
+  <div class="modal-body row-fluid">
+    <div class = "span6 pull-left" id = "announcement_content"> 
+    <form accept-charset="UTF-8" action="/announcements" class="simple_form new_announcement" id="new_announcement" method="post" novalidate="novalidate"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+    	<input id="announcement_title" name="announcement[title]" placeholder="Title" size="30" type="text" />
+    	<textarea cols="" id="announcement_content" name="announcement[content]" placeholder="Content" rows="14">
+</textarea>
+      </div>
+      <div class = "span6 pull-right" id = "announcement_options" >     
+        <div class="control-group radio_buttons required"><label class="radio_buttons required control-label"><abbr title="required">*</abbr> display on announcements page?</label><div class="controls"><label class="radio inline"><input checked="checked" class="radio_buttons required" id="announcement_public_true" name="announcement[public]" type="radio" value="true" />Yes</label><label class="radio inline"><input class="radio_buttons required" id="announcement_public_false" name="announcement[public]" type="radio" value="false" />No</label></div></div>
+        <h4>Mail to:</h4>
+        <div id ="recipients" style ="overflow: scroll; height: 258px;">
+          <ul >
+            
+            <div><input type="checkbox" class="checkall"> Workspace</div>
+            <li>
+              <input name="announcement[recipients][2]" type="hidden" value="0" /><input id="announcement_recipients_2" name="announcement[recipients][2]" type="checkbox" value="1" /> #&lt;#&lt;Class:0x007fc67b2119b8&gt;:0x007fc678ecdba0&gt;
+            </li>
+          </ul>
+       </div>
+       </div>
+     </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+	<input class="btn btn-primary" name="commit" type="submit" value="Create Announcement" />
+</form>  </div>
+</div>
+
+
+
+</div>
+</body>
+</html>
