@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include UsersHelper
   include CompaniesHelper
-  include LinkedInHelper
   include ApplicationHelper
   
   before_filter do |controller|
