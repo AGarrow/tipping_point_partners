@@ -4,7 +4,6 @@ gem 'rails', '3.2.3'
 
 gem 'bcrypt-ruby','3.0.1'
 gem "authlogic"
-gem 'oauth-plugin', "~> 0.4.0"
 gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
 gem "linkedin","0.3.7"
 gem "paperclip","3.0.4"

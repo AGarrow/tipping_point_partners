@@ -19,5 +19,6 @@ class ApplicationController < ActionController::Base
   enable_authorization do |exception|
     redirect_to home_path, :alert => exception.message
   end
+
   
 end
