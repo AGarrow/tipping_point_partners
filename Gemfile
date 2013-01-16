@@ -35,7 +35,7 @@ end
 
 group :development, :test do
 	gem 'sqlite3'
-	#gem 'webrat'
+	gem 'webrat'
 	gem 'capybara'
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'

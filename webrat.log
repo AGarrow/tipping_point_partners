@@ -1653,3 +1653,64 @@ REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"first_name"=>"pops",
 REQUESTING PAGE: GET http://www.example.com/users/2 with {} and HTTP headers {"HTTP_REFERER"=>"/users"}
 REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/users/2"}
 REQUESTING PAGE: GET /home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "password"=>"", "password_confirmation"=>"", "avatar"=>#<Rack::Test::UploadedFile:0x007fa3e43ffdb0 @content_type=nil, @original_filename="rails.png", @tempfile=#<File:/var/folders/8x/089zhw4w8xjcm_0059bt67h00000gr/T/rails.png20130116-21725-1u7fsk4>>}, "commit"=>"Create"} and HTTP headers {"HTTP_REFERER"=>"/signup"}
+REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "password"=>"", "password_confirmation"=>"", "avatar"=>#<Rack::Test::UploadedFile:0x007fa3e991ce38 @content_type=nil, @original_filename="rails.png", @tempfile=#<File:/var/folders/8x/089zhw4w8xjcm_0059bt67h00000gr/T/rails.png20130116-21725-1ixsfd7>>}, "commit"=>"Create"} and HTTP headers {"HTTP_REFERER"=>"/signup"}
+REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "password"=>"", "password_confirmation"=>"", "avatar"=>#<Rack::Test::UploadedFile:0x007fa3e2a5e4b0 @content_type=nil, @original_filename="rails.png", @tempfile=#<File:/var/folders/8x/089zhw4w8xjcm_0059bt67h00000gr/T/rails.png20130116-21725-12dcfju>>}, "commit"=>"Create"} and HTTP headers {"HTTP_REFERER"=>"/signup"}
+REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"first_name"=>"pops", "last_name"=>"werbizzow", "email"=>"dood@shakeshack.com", "password"=>"1234567", "password_confirmation"=>"1234567", "avatar"=>#<Rack::Test::UploadedFile:0x007fa3e4727b50 @content_type=nil, @original_filename="rails.png", @tempfile=#<File:/var/folders/8x/089zhw4w8xjcm_0059bt67h00000gr/T/rails.png20130116-21725-yqvgq0>>}, "commit"=>"Create"} and HTTP headers {"HTTP_REFERER"=>"/signup"}
+REQUESTING PAGE: GET http://www.example.com/users/2 with {} and HTTP headers {"HTTP_REFERER"=>"/users"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/users/2"}
+REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"first_name"=>"pops", "last_name"=>"werbizzow", "email"=>"dood@shakeshack.com", "password"=>"1234567", "password_confirmation"=>"1234567", "avatar"=>#<Rack::Test::UploadedFile:0x007fa3e2a59fa0 @content_type=nil, @original_filename="rails.png", @tempfile=#<File:/var/folders/8x/089zhw4w8xjcm_0059bt67h00000gr/T/rails.png20130116-21725-1r0c6oi>>}, "commit"=>"Create"} and HTTP headers {"HTTP_REFERER"=>"/signup"}
+REQUESTING PAGE: GET http://www.example.com/users/2 with {} and HTTP headers {"HTTP_REFERER"=>"/users"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/users/2"}
+REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"first_name"=>"pops", "last_name"=>"werbizzow", "email"=>"dood@shakeshack.com", "password"=>"1234567", "password_confirmation"=>"1234567", "avatar"=>#<Rack::Test::UploadedFile:0x007fa3e439b748 @content_type=nil, @original_filename="rails.png", @tempfile=#<File:/var/folders/8x/089zhw4w8xjcm_0059bt67h00000gr/T/rails.png20130116-21725-gpf8r2>>}, "commit"=>"Create"} and HTTP headers {"HTTP_REFERER"=>"/signup"}
+REQUESTING PAGE: GET http://www.example.com/users/2 with {} and HTTP headers {"HTTP_REFERER"=>"/users"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/users/2"}
+REQUESTING PAGE: GET /home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"first_name"=>"pops", "last_name"=>"werbizzow", "email"=>"dood@shakeshack.com", "password"=>"1234567", "password_confirmation"=>"1234567", "avatar"=>#<Rack::Test::UploadedFile:0x007fa3e2cb8a08 @content_type=nil, @original_filename="rails.png", @tempfile=#<File:/var/folders/8x/089zhw4w8xjcm_0059bt67h00000gr/T/rails.png20130116-21725-xxfi8r>>}, "commit"=>"Create"} and HTTP headers {"HTTP_REFERER"=>"/signup"}
+REQUESTING PAGE: GET http://www.example.com/users/2 with {} and HTTP headers {"HTTP_REFERER"=>"/users"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/users/2"}
+REQUESTING PAGE: GET /workspace with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"/workspace"}
+REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/validate/vzlKJl7mC6xj3QMczk62Sg with {} and HTTP headers {"HTTP_REFERER"=>"/signup"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/validate/vzlKJl7mC6xj3QMczk62Sg"}
+REQUESTING PAGE: GET /home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/validate/vzlKJl7mC6xj3QMczk62Sg with {} and HTTP headers {"HTTP_REFERER"=>"/signup"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/validate/vzlKJl7mC6xj3QMczk62Sg"}
+REQUESTING PAGE: GET /workspace with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET /signin with {} and HTTP headers {}
+REQUESTING PAGE: POST /sessions with {"utf8"=>"✓", "session"=>{"email"=>"", "password"=>""}, "commit"=>"Sign in"} and HTTP headers {"HTTP_REFERER"=>"/signin"}
+REQUESTING PAGE: GET /signin with {} and HTTP headers {}
+REQUESTING PAGE: POST /sessions with {"utf8"=>"✓", "session"=>{"email"=>"notReal@dips.com", "password"=>"what?"}, "commit"=>"Sign in"} and HTTP headers {"HTTP_REFERER"=>"/signin"}
+REQUESTING PAGE: GET /signin with {} and HTTP headers {}
+REQUESTING PAGE: GET /companies with {} and HTTP headers {"HTTP_REFERER"=>"/signin"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"/companies"}
+REQUESTING PAGE: GET http://www.example.com/signin with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: GET /signin with {} and HTTP headers {}
+REQUESTING PAGE: GET /signin with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/validate/vzlKJl7mC6xj3QMczk62Sg with {} and HTTP headers {"HTTP_REFERER"=>"/signin"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/validate/vzlKJl7mC6xj3QMczk62Sg"}
+REQUESTING PAGE: GET /signin with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: POST /sessions with {"utf8"=>"✓", "session"=>{"email"=>"danny_meyers@shakeshack.com", "password"=>"foobar"}, "commit"=>"Sign in"} and HTTP headers {"HTTP_REFERER"=>"/signin"}
+REQUESTING PAGE: GET http://www.example.com/ with {} and HTTP headers {"HTTP_REFERER"=>"/sessions"}
+REQUESTING PAGE: GET /signin with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/validate/vzlKJl7mC6xj3QMczk62Sg with {} and HTTP headers {"HTTP_REFERER"=>"/signin"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/validate/vzlKJl7mC6xj3QMczk62Sg"}
+REQUESTING PAGE: GET /signin with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: POST /sessions with {"utf8"=>"✓", "session"=>{"email"=>"danny_meyers@shakeshack.com", "password"=>"foobar"}, "commit"=>"Sign in"} and HTTP headers {"HTTP_REFERER"=>"/signin"}
+REQUESTING PAGE: GET http://www.example.com/ with {} and HTTP headers {"HTTP_REFERER"=>"/sessions"}
+REQUESTING PAGE: GET /signin with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/validate/vzlKJl7mC6xj3QMczk62Sg with {} and HTTP headers {"HTTP_REFERER"=>"/signin"}
+REQUESTING PAGE: GET http://www.example.com/home with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/validate/vzlKJl7mC6xj3QMczk62Sg"}
+REQUESTING PAGE: GET /signin with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/home"}
+REQUESTING PAGE: POST /sessions with {"utf8"=>"✓", "session"=>{"email"=>"danny_meyers@shakeshack.com", "password"=>"foobar"}, "commit"=>"Sign in"} and HTTP headers {"HTTP_REFERER"=>"/signin"}
+REQUESTING PAGE: GET http://www.example.com/ with {} and HTTP headers {"HTTP_REFERER"=>"/sessions"}
+REQUESTING PAGE: GET /workspace with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/"}
