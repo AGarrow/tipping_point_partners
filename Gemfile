@@ -36,13 +36,17 @@ end
 group :development, :test do
 	gem 'sqlite3'
 	gem 'webrat'
-	gem 'capybara'
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'
 	gem 'ruby-debug19', '~> 0.11.6' 
 	gem 'rmagick'
 	gem 'launchy'
 end
+group :test do
+	gem 'capybara', '1.1.2'
+	gem 'growl'
+end
+
 
 
 
