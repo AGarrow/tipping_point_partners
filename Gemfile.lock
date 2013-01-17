@@ -85,6 +85,7 @@ GEM
       factory_girl (~> 4.0.0)
       railties (>= 3.0.0)
     ffi (1.1.4)
+    growl (1.0.3)
     hashie (1.2.0)
     hike (1.2.1)
     httparty (0.8.3)
@@ -241,9 +242,10 @@ DEPENDENCIES
   bootstrap-sass (= 2.0.0)
   bootstrap-sass-rails
   cancan!
-  capybara
+  capybara (= 1.1.2)
   coffee-rails (~> 3.2.1)
   factory_girl_rails
+  growl
   jquery-rails
   json
   launchy
