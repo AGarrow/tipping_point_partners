@@ -9,6 +9,7 @@ gem "paperclip","3.0.4"
 gem 'aws-s3'
 gem 'aws-sdk'
 gem 'simple_form'
+gem "linkedin","0.3.7"
 gem 'omniauth'
 gem 'omniauth-twitter'
 
@@ -24,6 +25,7 @@ gem 'json'
 gem 'will_paginate', '~>3.0'
 gem 'jquery-rails'
 gem 'rails_autolink'
+
   
 group :assets do
 

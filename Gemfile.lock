@@ -109,6 +109,10 @@ GEM
       addressable
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
+    linkedin (0.3.7)
+      hashie (~> 1.2)
+      multi_json (~> 1.0)
+      oauth (~> 0.4)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -249,6 +253,7 @@ DEPENDENCIES
   jquery-rails
   json
   launchy
+  linkedin (= 0.3.7)
   omniauth
   omniauth-twitter
   paperclip (= 3.0.4)
