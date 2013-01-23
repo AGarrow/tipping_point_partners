@@ -21,7 +21,8 @@ class AnnouncementMailer < ActionMailer::Base
   	end
   	
 
-  	mail :to => recipients.join(","),
-  	:subject => "#{@announcement.title}"			
+  	mail ( :to => @companies.join(","),
+  	       :bcc => recipients.join(","),
+           :subject => "#{@announcement.title}"			
   end
 end

@@ -4,11 +4,12 @@
     <h3>Make an announcement!</h3>
   </div>
   <div class="modal-body row-fluid">
-    <div class = "span6 pull-left" id = "announcement_content"> 
+    <div class = "span6 pull-left" id = "announcement_content">
     <%= simple_form_for @announcement do |f| %>
     	<%= f.text_field :title, :placeholder => 'Title' %>
-    	<%= f.text_area :content, :rows => "14", :cols => "", :placeholder => 'Content' %>
-      </div>
+    	<%= f.text_area :content, :id => "announcement" :rows => "14", :cols => "", :placeholder => 'Content' %>
+    
+          </div>
       <div class = "span6 pull-right" id = "announcement_options" >     
         <%= f.input :public, :as => :radio_buttons, :item_wrapper_class => 'inline', checked: true, :label => "display on announcements page?" %>
         <h4>Mail to:</h4>
@@ -21,6 +22,8 @@
               <%= n.check_box company.id, {} %><%=" "<<company.name %>
             </li>
             <% end %>  
+
+
           </ul>
          <%end%>
        </div>

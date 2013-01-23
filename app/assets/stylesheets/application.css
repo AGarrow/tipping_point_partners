@@ -11,4 +11,5 @@
  *= require_self
  *= require_tree .
 */
-
+*= require markitup/skins/markitup/style
+*= require markitup/sets/xbbcode/style

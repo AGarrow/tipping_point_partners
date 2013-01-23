@@ -4,7 +4,7 @@ TippingPointPartners::Application.routes.draw do
   
 
 
-
+mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
 
 
   get "announcements/create"

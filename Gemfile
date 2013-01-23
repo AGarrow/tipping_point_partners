@@ -25,6 +25,8 @@ gem 'json'
 gem 'will_paginate', '~>3.0'
 gem 'jquery-rails'
 gem 'rails_autolink'
+gem 'tinymce-rails'
+gem 'markitup-rails'
 gem 'webrat'
   
 group :assets do
