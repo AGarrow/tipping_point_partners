@@ -16,9 +16,7 @@
 //= require_tree .
 // make private/public button toggle update hidden field
 //= require tinymce-jquery
-//= require markitup
-//= require markitup/sets/xbbcode/set
-$("#announcement_content").markitup mySettings
+
 
 jQuery(function() {	
 	$('.carousel').carousel({
